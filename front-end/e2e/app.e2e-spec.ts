@@ -1,10 +1,10 @@
-import {FrontEndPage} from "./app.po";
+import { ProjPage } from './app.po';
 
-describe('front-end App', () => {
-  let page: FrontEndPage;
+describe('proj App', () => {
+  let page: ProjPage;
 
   beforeEach(() => {
-    page = new FrontEndPage();
+    page = new ProjPage();
   });
 
   it('should display message saying app works', () => {
