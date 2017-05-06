@@ -1,20 +1,31 @@
 
-<popup #popup1>
-  Esti sigur ca vrei sa trimiti cererea?
-</popup>
-
-<popup #popup2>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Numar papuc</label>
-      <div class="col-sm-7">
-        <input type="text" class="form-control" name="papuc" id="papuc" placeholder="40">
-      </div>
+<p-dialog [(visible)]="display1" modal="modal" width="500" responsive="true" draggable="false" style="">
+  <p-header>
+    <h4>Trimitere cerere</h4>
+   </p-header>
+  <h3>Sigur vreti sa trimiteti cererea pentru adeverinta transport?</h3>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button md-button class="button" pButton icon="fa-close" (click)="display1=false">ANULEAZA</button>
+      <button md-button class="button" pButton icon="fa-check" (click)="sendInformation1()">TRIMITE</button>
     </div>
-  </form>
+  </p-footer>
+</p-dialog>
 
-</popup>
+<p-dialog [(visible)]="display2" modal="modal" width="500" responsive="true" draggable="false">
+  <p-header>
+    <h4>Trimitere cerere</h4>
+  </p-header>
+  <h3>Introduceti datele necesare</h3>
 
+  <input type="text" pInputText size="50" placeholder="NUMARUL LA PAPUC" pInputText [(ngModel)]="text2"/>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button md-button class="button" pButton icon="fa-close" (click)="display2=false">ANULEAZA</button>
+      <button md-button class="button" pButton icon="fa-check" (click)="sendInformation2()">TRIMITE</button>
+    </div>
+  </p-footer>
+</p-dialog>
 
 <div class="full-page">
 
@@ -29,7 +40,7 @@
 
                  <md-card-actions class="active" align="end">
                    <li class="active">
-                     <button md-button class="button" (click)="showPopup1()">TRIMITE</button>
+                     <button md-button class="button" (click)="showDialog1()" pButton >TRIMITE</button>
                    </li>
                  </md-card-actions>
                </md-card>
@@ -43,7 +54,7 @@
 
               <md-card-actions class="active" align="end">
                 <li class="active">
-                  <button md-button class="button" (click)="showPopup2()">TRIMITE</button>
+                  <button md-button class="button" (click)="showDialog2()" pButton >TRIMITE</button>
                 </li>
               </md-card-actions>
             </md-card>
@@ -62,7 +73,6 @@
               </md-card-actions>
             </md-card>
           </div> <!--third card-->
-
 
           <div class="col-md-4" >
 
