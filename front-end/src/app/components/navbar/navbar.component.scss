@@ -1,5 +1,5 @@
 
-nav{
+nav {
   background-color: #3C718E;
   text-align: center;
   color: white;
@@ -11,7 +11,7 @@ nav{
   margin-top: 4%;
   margin-left: 0;
   margin-right: 0;
-  background-color:#336277;
+  background-color: #336277;
   padding: 0.7em 0 0.2em 0;
   text-align: center;
   border: 0;
@@ -21,7 +21,7 @@ nav{
   background-color: white;
 }
 
-.btn{
+.btn {
   background-color: transparent;
 }
 
@@ -41,8 +41,7 @@ nav{
   float: right;
 }
 
-
-.banner{
+.banner {
   text-shadow: 2px 2px 8px #1E1E1E;
   text-align: center;
   padding-left: 10%;
@@ -52,6 +51,7 @@ a {
   color: #1E1E1E;
   text-decoration: none;
 }
+
 a:hover {
   color: white;
 }
@@ -63,17 +63,18 @@ p {
 input {
   outline: none;
 }
+
 input[type=search] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
   font-family: inherit;
   font-size: 100%;
 }
+
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
   display: none;
 }
-
 
 input[type=search] {
   background: #E2C223 url('../../../assets/img/search-01-01.png') no-repeat 9px center;
@@ -101,6 +102,7 @@ input[type=search]:focus {
 input:-moz-placeholder {
   color: #1E1E1E;
 }
+
 input::-webkit-input-placeholder {
   color: #1E1E1E;
 }
@@ -111,6 +113,7 @@ input::-webkit-input-placeholder {
   color: transparent;
   cursor: pointer;
 }
+
 #demo-2 input[type=search]:hover {
 
 }
@@ -122,9 +125,11 @@ input::-webkit-input-placeholder {
   background-color: #fff;
   cursor: auto;
 }
+
 #demo-2 input:-moz-placeholder {
   color: transparent;
 }
+
 #demo-2 input::-webkit-input-placeholder {
   color: transparent;
 }

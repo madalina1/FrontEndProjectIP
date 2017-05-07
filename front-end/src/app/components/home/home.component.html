@@ -1,123 +1,152 @@
-
-<p-dialog [(visible)]="display1" modal="modal" width="500" responsive="true" draggable="false" style="">
-  <p-header>
-    <h4>Trimitere cerere</h4>
-   </p-header>
-  <h3>Sigur vreti sa trimiteti cererea pentru adeverinta transport?</h3>
-  <p-footer>
-    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-      <button md-button class="button" pButton icon="fa-close" (click)="display1=false">ANULEAZA</button>
-      <button md-button class="button" pButton icon="fa-check" (click)="sendInformation1()">TRIMITE</button>
+<!--
+    Aici e primul popup (pt cerere transport) care e vizibil sau nu in functie de variabila 'display1' din typescript
+-->
+<p-dialog [(visible)]="display1" modal="modal" width="500" responsive="true">
+    <!--
+        'p-header' e ce sa arate ca titlu
+        'circle-01' e o clasa din scss care face un cerc asemanator cu cel de la search
+        img-ul este cel corespunzator imaginii din cerc
+        -->
+    <p-header>
+        <h4>Trimitere cerere</h4>
+    </p-header>
+    <div class="circle-01">
+        <img src="../../../assets/img/question.png">
     </div>
-  </p-footer>
+    <!--
+        Am folosit h3 facut in scss pt a formata textul
+    -->
+    <h3>Sigur vreti sa trimiteti cererea pentru adeverinta transport?</h3>
+    <!--
+       in footer sunt cele doua butoane de anulare si trimitere
+        - la anulare doar se schimba variabila 'display' pentru a inchide popup-ul
+        - la trimitere se apeleaza functia 'sendInformation' care trebuie implementata pt a trimite cererea
+    -->
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button class="button" pButton icon="fa-close" (click)="display1=false">ANULEAZA</button>
+            <button md-button class="button" pButton icon="fa-check" (click)="sendInformation1()">TRIMITE</button>
+        </div>
+    </p-footer>
 </p-dialog>
 
-<p-dialog [(visible)]="display2" modal="modal" width="500" responsive="true" draggable="false">
-  <p-header>
-    <h4>Trimitere cerere</h4>
-  </p-header>
-  <h3>Introduceti datele necesare</h3>
-
-  <input type="text" pInputText size="50" placeholder="NUMARUL LA PAPUC" pInputText [(ngModel)]="text2"/>
-  <p-footer>
-    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-      <button md-button class="button" pButton icon="fa-close" (click)="display2=false">ANULEAZA</button>
-      <button md-button class="button" pButton icon="fa-check" (click)="sendInformation2()">TRIMITE</button>
+<!--
+       Al doilea popup care in mare functioneaza la fel ca primul
+    -->
+<p-dialog [(visible)]="display2" modal="modal" width="500" responsive="true">
+    <p-header>
+        <h4>Trimitere cerere</h4>
+    </p-header>
+    <!--
+       Este folosita alta imagine pt a alerta userul (i guess) ca trebuie umplute casute
+    -->
+    <div class="circle-01">
+        <img src="../../../assets/img/exclamation.png" height="40px">
     </div>
-  </p-footer>
+    <h3>Introduceti datele necesare</h3>
+    <!--
+        Folosit un field de input pt a fi umplut de user cu informatiile necesare
+        -->
+    <input type="text" pInputText size="50" placeholder="NUMARUL LA PAPUC" pInputText [(ngModel)]="text2"/>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button class="button" pButton icon="fa-close" (click)="display2=false">ANULEAZA</button>
+            <button md-button class="button" pButton icon="fa-check" (click)="sendInformation2()">TRIMITE</button>
+        </div>
+    </p-footer>
 </p-dialog>
 
 <div class="full-page">
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4" >
+            <div class="col-md-4">
 
-               <md-card class="my-card">
-                 <md-card-title-group>
-                   <md-card-title class="title">Cerere Transport</md-card-title>
-                 </md-card-title-group>
+                <md-card class="my-card">
+                    <md-card-title-group>
+                        <md-card-title class="title">Cerere Transport</md-card-title>
+                    </md-card-title-group>
 
-                 <md-card-actions class="active" align="end">
-                   <li class="active">
-                     <button md-button class="button" (click)="showDialog1()" pButton >TRIMITE</button>
-                   </li>
-                 </md-card-actions>
-               </md-card>
+                    <md-card-actions class="active" align="end">
+                        <li class="active">
+                            <button md-button class="button" (click)="showDialog1()" pButton>TRIMITE</button>
+                        </li>
+                    </md-card-actions>
+                </md-card>
             </div> <!--first card-->
-          <div class="col-md-4" >
+            <div class="col-md-4">
 
-            <md-card class="my-card">
-              <md-card-title-group>
-                <md-card-title class="title">Cerere Papuci</md-card-title>
-              </md-card-title-group>
+                <md-card class="my-card">
+                    <md-card-title-group>
+                        <md-card-title class="title">Cerere Papuci</md-card-title>
+                    </md-card-title-group>
 
-              <md-card-actions class="active" align="end">
-                <li class="active">
-                  <button md-button class="button" (click)="showDialog2()" pButton >TRIMITE</button>
-                </li>
-              </md-card-actions>
-            </md-card>
-          </div> <!--second card-->
-          <div class="col-md-4" >
+                    <md-card-actions class="active" align="end">
+                        <li class="active">
+                            <button md-button class="button" (click)="showDialog2()" pButton>TRIMITE</button>
+                        </li>
+                    </md-card-actions>
+                </md-card>
+            </div> <!--second card-->
+            <div class="col-md-4">
 
-            <md-card class="my-card">
-              <md-card-title-group>
-                <md-card-title class="title">Cerere Transport</md-card-title>
-              </md-card-title-group>
+                <md-card class="my-card">
+                    <md-card-title-group>
+                        <md-card-title class="title">Cerere Transport</md-card-title>
+                    </md-card-title-group>
 
-              <md-card-actions class="active" align="end">
-                <li class="active">
-                  <button md-button class="button">TRIMITE</button>
-                </li>
-              </md-card-actions>
-            </md-card>
-          </div> <!--third card-->
+                    <md-card-actions class="active" align="end">
+                        <li class="active">
+                            <button md-button class="button">TRIMITE</button>
+                        </li>
+                    </md-card-actions>
+                </md-card>
+            </div> <!--third card-->
 
-          <div class="col-md-4" >
+            <div class="col-md-4">
 
-            <md-card class="my-card">
-              <md-card-title-group>
-                <md-card-title class="title">Cerere Transport</md-card-title>
-              </md-card-title-group>
+                <md-card class="my-card">
+                    <md-card-title-group>
+                        <md-card-title class="title">Cerere Transport</md-card-title>
+                    </md-card-title-group>
 
-              <md-card-actions class="active" align="end">
-                <li class="active">
-                  <button md-button class="button">TRIMITE</button>
-                </li>
-              </md-card-actions>
-            </md-card>
-          </div> <!--forth card-->
+                    <md-card-actions class="active" align="end">
+                        <li class="active">
+                            <button md-button class="button">TRIMITE</button>
+                        </li>
+                    </md-card-actions>
+                </md-card>
+            </div> <!--forth card-->
 
-          <div class="col-md-4" >
+            <div class="col-md-4">
 
-            <md-card class="my-card">
-              <md-card-title-group>
-                <md-card-title class="title">Cerere Transport</md-card-title>
-              </md-card-title-group>
+                <md-card class="my-card">
+                    <md-card-title-group>
+                        <md-card-title class="title">Cerere Transport</md-card-title>
+                    </md-card-title-group>
 
-              <md-card-actions class="active" align="end">
-                <li class="active">
-                  <button md-button class="button">TRIMITE</button>
-                </li>
-              </md-card-actions>
-            </md-card>
-          </div>  <!--fifth card-->
+                    <md-card-actions class="active" align="end">
+                        <li class="active">
+                            <button md-button class="button">TRIMITE</button>
+                        </li>
+                    </md-card-actions>
+                </md-card>
+            </div>  <!--fifth card-->
 
-          <div class="col-md-4" >
+            <div class="col-md-4">
 
-            <md-card class="my-card">
-              <md-card-title-group>
-                <md-card-title class="title">Cerere Transport</md-card-title>
-              </md-card-title-group>
+                <md-card class="my-card">
+                    <md-card-title-group>
+                        <md-card-title class="title">Cerere Transport</md-card-title>
+                    </md-card-title-group>
 
-              <md-card-actions class="active" align="end">
-                <li class="active">
-                  <button md-button class="button">TRIMITE</button>
-                </li>
-              </md-card-actions>
-            </md-card>
-          </div> <!--fifth card-->
+                    <md-card-actions class="active" align="end">
+                        <li class="active">
+                            <button md-button class="button">TRIMITE</button>
+                        </li>
+                    </md-card-actions>
+                </md-card>
+            </div> <!--fifth card-->
 
 
         </div><!--final row-->
