@@ -8,29 +8,23 @@ h4 {
   margin: 0 0 0 0;
 }
 
-/*
-.ui-tooltip .ui-tooltip-text {
-  background-color: red;
-  color: #fff;
-}nu merge
-*/
-
-img {
-  display: block;
-  margin: auto;
-  //pentru a centra imaginea din cerculetul galben (din popup)
+table, tr, td {
+  vertical-align: middle;
+  padding-left: 15px;
+  //pt ca iconita sa nu fie lipita in stanga de margina si textul sa fie in mijloc
 }
 
-.circle-01 {
-  border: solid 1px #E2C223;
-  padding: 0 0 0 0;
-  margin: auto;
-  height: 50px;
-  width: 50px;
-  box-shadow: 1px 1px 8px #666;
-  background: #E2C223;
-  border-radius: 25px;
-  //face un cerculet asemanator celui de la search
+input {
+  margin-left: 68px;
+  //ca text-fieldul sa fie aliniat cu textul de langa iconita
+}
+
+.material-icons {
+  height: 38px;
+  width: 38px;
+  font-size: 36px;
+  color: #E2C223;
+  //marimea si culoarea iconitei
 }
 
 .col-sm-4 {

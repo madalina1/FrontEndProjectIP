@@ -7,16 +7,17 @@
         'circle-01' e o clasa din scss care face un cerc asemanator cu cel de la search
         img-ul este cel corespunzator imaginii din cerc
         -->
-    <p-header>
-        <h4>Trimitere cerere</h4>
-    </p-header>
-    <div class="circle-01">
-        <img src="../../../assets/img/question.png">
-    </div>
-    <!--
-        Am folosit h3 facut in scss pt a formata textul
-    -->
-    <h3>Sigur vreti sa trimiteti cererea pentru adeverinta transport?</h3>
+    <p-header><h4>Trimitere cerere</h4></p-header>
+
+    <table>
+        <!--
+            'help outline' e numele iconitei pe care o ia de pe site
+            'help_outline' si 'help outline' sunt diferite
+        -->
+        <td><i class="material-icons">help outline</i></td>
+        <td><h3>Sigur vreti sa trimiteti cererea pentru adeverinta transport?</h3><br></td>
+    </table>
+
     <!--
        in footer sunt cele doua butoane de anulare si trimitere
         - la anulare doar se schimba variabila 'display' pentru a inchide popup-ul
@@ -24,8 +25,8 @@
     -->
     <p-footer>
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-            <button md-button class="button" pButton icon="fa-close" (click)="display1=false">ANULEAZA</button>
             <button md-button class="button" pButton icon="fa-check" (click)="sendInformation1()">TRIMITE</button>
+            <button md-button class="button" pButton icon="fa-close" (click)="display1=false">ANULEAZA</button>
         </div>
     </p-footer>
 </p-dialog>
@@ -34,24 +35,24 @@
        Al doilea popup care in mare functioneaza la fel ca primul
     -->
 <p-dialog [(visible)]="display2" modal="modal" width="500" responsive="true">
-    <p-header>
-        <h4>Trimitere cerere</h4>
-    </p-header>
+    <p-header><h4>Trimitere cerere</h4></p-header>
+
     <!--
        Este folosita alta imagine pt a alerta userul (i guess) ca trebuie umplute casute
+       Am folosit tabel pt a avea imaginea si textul pe aceeasi linie
     -->
-    <div class="circle-01">
-        <img src="../../../assets/img/exclamation.png" height="40px">
-    </div>
-    <h3>Introduceti datele necesare</h3>
+    <table>
+        <td><i class="material-icons">error outline</i></td>
+        <td><h3>Introduceti datele necesare</h3><br></td>
+    </table>
     <!--
         Folosit un field de input pt a fi umplut de user cu informatiile necesare
         -->
     <input type="text" pInputText size="50" placeholder="NUMARUL LA PAPUC" pInputText [(ngModel)]="text2"/>
     <p-footer>
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-            <button md-button class="button" pButton icon="fa-close" (click)="display2=false">ANULEAZA</button>
             <button md-button class="button" pButton icon="fa-check" (click)="sendInformation2()">TRIMITE</button>
+            <button md-button class="button" pButton icon="fa-close" (click)="display2=false">ANULEAZA</button>
         </div>
     </p-footer>
 </p-dialog>
