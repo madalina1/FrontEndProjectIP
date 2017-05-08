@@ -6,7 +6,7 @@ Pasii urmatori sunt pentru cei care nu au proiectul salvat local, pe calculator:
 
 1. Mergeti pe repoul Madalinei unde are proiectul
 2. Fork prima data (asta o sa faca un folder pe githubul vostru cu proiectul)
-3. Apoi click pe butonul verde din dreapta 
+3. Apoi click pe butonul verde din dreapta (Clone or download)
 4. Selectati linkul
 5. Mergeti intr-un folder unde vreti sa salvati proiectul si sa il aveti local
 6. Deschideti command line in folderul respectiv - SHIFT + click dreapta - Open cmd window....(sper ca aveti github instalat pe windows)
@@ -14,7 +14,7 @@ Pasii urmatori sunt pentru cei care nu au proiectul salvat local, pe calculator:
 
 Pentru cei care au deja salvat proiectul, intrati in Intellij, deschideti folder-ul in care se afla proiectul si apasati pe butonul din dreapta sus(cel pe care scrie VCS cu sageata albastra in jos -> Update Project) si sa aveti bifat la "Update Type" -> "Branch Default" si la "Clean working tree..." -> "Using Stash".
 
-* Pentru a da run la proiect, intrati in folder-ul front-end si scrieti in terminal (View -> Tool Window -> Terminal) npm start (Cand apare Compiled successfully puteti sa intrati pe site -> localhost:4200). 
+* Pentru a da run la proiect, scrieti in terminal (View -> Tool Window -> Terminal) cd front-end (asta va va muta in directorul front-end) si apoi scrieti: npm start (Cand apare Compiled successfully puteti sa intrati pe site -> localhost:4200). 
 * PS: Cei care nu au rulat niciodata proiectul, intai scrieti in terminal npm install si apoi npm start.
 
 +cateva reguli de la Katy
