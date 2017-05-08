@@ -22,3 +22,13 @@ Pentru cei care au deja salvat proiectul, intrati in Intellij, deschideti folder
 1. Toti trebuie sa avem acelasi Code Style pentru proiectul asta in momentul in care o sa urcam pe Github. Am sa atasez un fisier xml si unul txt pe grupul de facebook si sa urmati pasii de acolo.
 2. In momentul in care o sa vreti sa lucrati ceva sa va faceti un branch nou NU PE MASTER. Dupa ce vedeti ca aveti ceva functional faceti commituri pe branchul vostru( ex. : made nav bar).Dupa ce terminati de lucrat puteti face Pull Request pe Repoul mare si dupa un review decidem impreuna daca ceea ce ati lucrat poate fi urcat pe Master sau mai sunt necesare anumite modificari inainte de a urca pe Master.
 3. Pe langa asta sa nu uitati sa aveti grija sa faceti update la ce aveti voi local . Adica sa apasati pe Sagetica in jos albastra dreapta sus si lasati ce e ales acolo si OK. Oricum am sa postez de fiecare data cand o sa modific Masterul ca sa faceti si voi update
+
+ -> Cum sa uploadezi schimbarile facute de tine pe Git <-
+ 1. In folderul principal al proiectului deschizi o consola git prin click dreapta -> 'Git Bash Here'
+ 1.Optional. Pentru a verifica schimbarile facute de tine (care nu au fost 'comitate') scrie 'git status' si vei primi o lista de fisiere modificate, sterse sau adaugate
+ 2. Daca ai modificari, scrie 'git commit -m "comment"' unde 'comment' e preferabil sa fie ce schimbari ai facut in commit-ul respectiv. De exemplu 'git commit -m "Schimbat culori si adaugat imagini"' (Obs: Ghilimelele din jurul comment-ului sunt necesare)
+ 3. Ca sa nu uploadezi schimbarile direct pe master, fa un branch nou cu 'git checkout -b newBranch' ('newBranch' fiind numele noului branch, pui ce vrei, nu prea conteaza; numele sa nu contina spatii)
+ 3.Optional. Pentru a verifica pe ce branch esti si sa vezi celelalte branch-uri scrie 'git branch'
+ 4. Dai 'git push origin newBranch' pentru a trimite schimbarile facute pe repository (Inlocuiesti 'newBranch' cu numele branchului facut nou de tine)
+ 5. Intri in browser pe github la repository (adica pagina la care esti acum :>) si ar trebui sa-ti apara un pic mai jos de bara colorata in diferite culori commit-ul facut de tine. Dai pe el si dai pull request (poti vedea fiecare linie cu schimarile facute de tine).
+ 6. Done! Acum anunti seful de echipa care va verifica schimbarile facute de tine si va da sau nu merge :D
