@@ -14,11 +14,30 @@ h4 {
   color: #fff;
 }nu merge
 */
-.col-sm-4{
+
+img {
+  display: block;
+  margin: auto;
+  //pentru a centra imaginea din cerculetul galben (din popup)
+}
+
+.circle-01 {
+  border: solid 1px #E2C223;
+  padding: 0 0 0 0;
+  margin: auto;
+  height: 50px;
+  width: 50px;
+  box-shadow: 1px 1px 8px #666;
+  background: #E2C223;
+  border-radius: 25px;
+  //face un cerculet asemanator celui de la search
+}
+
+.col-sm-4 {
   background-color: grey;
 }
 
-.my-card{
+.my-card {
   margin-top: 7%;
   background-color: #3C718E;
 }
@@ -28,22 +47,22 @@ h4 {
 }
 
 div.horizontalRule {
-  width:100%;
+  width: 100%;
   padding-left: 0;
   padding-right: 0;
-  background-color:#d1d1d1;
-  height:0.5px;
-  margin-top:1px;
-  margin-bottom:1px;
+  background-color: #d1d1d1;
+  height: 0.5px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 
-.button{
+.button {
   background-color: #3C718E;
   color: white;
   margin-right: 0.5em;
 }
 
-li{
+li {
   list-style: none;
 }
 

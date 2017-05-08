@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
   constructor() {
@@ -13,6 +14,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
+   Am facut cate o variabla display pentru fiecare card (presupunand ca fiecare face cate ceva diferit)
+   */
   display1: boolean = false;
   display2: boolean = false;
   display3: boolean = false;
@@ -24,10 +28,16 @@ export class HomeComponent implements OnInit {
 
   text2: string;
 
+  /*
+   La apasarea butonului, popup-ul respectiv va aparea (aici 'popup1')
+   */
   showDialog1() {
     this.display1 = true;
   }
 
+  /*
+   Cand se apasa "trimite" in pop-up, se inchide popup-ul si se iau informatiile introduse - de implementat
+   */
   sendInformation1() {
     this.display1 = false;
     //something to send the request
