@@ -13,9 +13,10 @@ import { HomeComponent } from "./components/home/home.component";
 import { routing } from "./app.routing";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { AccordionModule } from 'primeng/primeng';     //accordion and accordion tab
-import { MenuItem } from 'primeng/primeng';            //api
 import { DialogModule } from 'primeng/primeng';
 import { InputTextModule } from 'primeng/primeng';
+import { LoginService } from './services/login.service';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InputTextModule } from 'primeng/primeng';
     FooterComponent,
     TransportDocComponent,
     HistoryComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { InputTextModule } from 'primeng/primeng';
     DialogModule,
     InputTextModule,
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
