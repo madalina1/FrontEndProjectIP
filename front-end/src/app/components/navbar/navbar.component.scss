@@ -1,13 +1,11 @@
-
 nav {
   background-color: #3C718E;
-  text-align: center;
   color: white;
   border: none;
   height: 25%;
 }
 
-#container {
+nav #container {
   margin-top: 4%;
   margin-left: 0;
   margin-right: 0;
@@ -15,10 +13,7 @@ nav {
   padding: 0.7em 0 0.2em 0;
   text-align: center;
   border: 0;
-}
-
-.mdl-demo .mdl-layout__tab-panel:not(#overview) {
-  background-color: white;
+  height: 35%;
 }
 
 .btn {
@@ -26,14 +21,21 @@ nav {
 }
 
 .btn:hover {
-  text-decoration-style: solid;
-  color: white;
+  color: white !important;
   text-shadow: 0 0 2px white;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn:after {
-  color: white;
+  color: white !important;
   text-shadow: 0 0 2px white;
+  display: block;
+  outline: none;
+}
+
+.btn:focus {
+  outline: none;
 }
 
 .btn2 {
@@ -45,6 +47,91 @@ nav {
   text-shadow: 2px 2px 8px #1E1E1E;
   text-align: center;
   padding-left: 10%;
+}
+
+@media screen and (max-width: 1280px) {
+  .banner {
+    text-shadow: 2px 2px 8px #1E1E1E;
+    text-align: center;
+    padding-left: 15%;
+    align-content: center;
+  }
+
+  nav {
+    background-color: #3C718E;
+    color: white;
+    border: none;
+    height: 25%;
+  }
+
+  nav #container {
+    margin-top: 4%;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #336277;
+    padding: 0.7em 0 0.2em 0;
+    text-align: center;
+    border: 0;
+    height: 35%;
+  }
+
+}
+
+@media screen and (max-width: 840px) {
+
+  .banner {
+    text-shadow: 2px 2px 8px #1E1E1E;
+    text-align: center;
+    padding-left: 15%;
+    font-size: 1.4em;
+    align-content: center;
+  }
+
+  nav {
+    background-color: #3C718E;
+    color: white;
+    border: none;
+    height: 25%;
+  }
+
+  nav #container {
+    margin-top: 4%;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #336277;
+    padding: 0.7em 0 0.2em 0;
+    text-align: center;
+    border: 0;
+    height: 35%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .banner {
+    text-shadow: 2px 2px 8px #1E1E1E;
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 1.4em;
+  }
+
+  nav {
+    background-color: #3C718E;
+    color: white;
+    border: none;
+    height: 15%;
+  }
+
+  nav #container {
+    margin-top: 4%;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #336277;
+    padding: 0.7em 0 0.2em 0;
+    text-align: center;
+    border: 0;
+    height: 35%;
+  }
 }
 
 a {
