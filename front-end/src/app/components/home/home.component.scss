@@ -1,3 +1,7 @@
+h2 {
+  font-size: 12px;
+}
+
 h3 {
   font-size: 15px;
 }
@@ -14,9 +18,14 @@ table, tr, td {
   //pt ca iconita sa nu fie lipita in stanga de margina si textul sa fie in mijloc
 }
 
-input {
-  margin-left: 68px;
-  //ca text-fieldul sa fie aliniat cu textul de langa iconita
+#p-dialog {
+  z-index: 9999;
+  width: 100%;
+}
+
+.text-fields {
+  margin-left: 65px;
+  margin-bottom: 7px;
 }
 
 .material-icons {
