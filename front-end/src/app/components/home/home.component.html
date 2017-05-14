@@ -1,28 +1,22 @@
-<!--
-    Aici e primul popup (pt cerere transport) care e vizibil sau nu in functie de variabila 'display1' din typescript
--->
+<!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display1" modal="modal" width="500" responsive="true">
-    <!--
-        'p-header' e ce sa arate ca titlu
-        'circle-01' e o clasa din scss care face un cerc asemanator cu cel de la search
-        img-ul este cel corespunzator imaginii din cerc
-        -->
-    <p-header><h4>Trimitere cerere</h4></p-header>
+    <p-header><h4>Cerere Transport</h4></p-header>
 
     <table>
-        <!--
-            'help outline' e numele iconitei pe care o ia de pe site
-            'help_outline' si 'help outline' sunt diferite
-        -->
-        <td><i class="material-icons">help outline</i></td>
-        <td><h3>Sigur vreti sa trimiteti cererea pentru adeverinta transport?</h3><br></td>
+        <td><i class="material-icons">error outline</i></td>
+        <td><h3>Introduceti datele necesare</h3><br></td>
     </table>
 
-    <!--
-       in footer sunt cele doua butoane de anulare si trimitere
-        - la anulare doar se schimba variabila 'display' pentru a inchide popup-ul
-        - la trimitere se apeleaza functia 'sendInformation' care trebuie implementata pt a trimite cererea
-    -->
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Serie si Numar C.I" pInputText [(ngModel)]="serie"/>
+        <!-- S-ar putea sa nu fie necesar -->
+    </div>
+
+    <div class="text-fields">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+        <!--<p>Selected City: {{selectedYear ? selectedYear.name : 'none'}}</p>-->
+    </div>
+
     <p-footer>
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
             <button md-button class="button" pButton icon="fa-check" (click)="sendInformation1()">TRIMITE</button>
@@ -31,28 +25,202 @@
     </p-footer>
 </p-dialog>
 
-<!--
-       Al doilea popup care in mare functioneaza la fel ca primul
-    -->
+<!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display2" modal="modal" width="500" responsive="true">
-    <p-header><h4>Trimitere cerere</h4></p-header>
+    <p-header><h4>Cerere Retragere</h4></p-header>
 
-    <!--
-       Este folosita alta imagine pt a alerta userul (i guess) ca trebuie umplute casute
-       Am folosit tabel pt a avea imaginea si textul pe aceeasi linie
-    -->
     <table>
         <td><i class="material-icons">error outline</i></td>
         <td><h3>Introduceti datele necesare</h3><br></td>
     </table>
-    <!--
-        Folosit un field de input pt a fi umplut de user cu informatiile necesare
-        -->
-    <input type="text" pInputText size="50" placeholder="NUMARUL LA PAPUC" pInputText [(ngModel)]="text2"/>
+
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Serie si Numar C.I." pInputText [(ngModel)]="serie"/>
+        <!-- S-ar putea sa nu fie necesar -->
+    </div>
+
+    <div class="text-fields">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+    </div>
+
+    <div class="text-fields">
+        <p-inputMask [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
+                     placeholder="Anul Universitar"></p-inputMask>
+    </div>
+
+    <div class="text-fields">
+        <p-selectButton [options]="courses" [(ngModel)]="selectedCourse"></p-selectButton>
+    </div>
+
+    <div class="text-fields">
+        <p-checkbox [(ngModel)]="accept" binary="true" value="false"
+                    label="Vă rog să-mi aprobaţi cererea de retragere"></p-checkbox>
+    </div>
+
     <p-footer>
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
             <button md-button class="button" pButton icon="fa-check" (click)="sendInformation2()">TRIMITE</button>
             <button md-button class="button" pButton icon="fa-close" (click)="display2=false">ANULEAZA</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<!-- ======================== PRIMUL POPUP ======================== -->
+<p-dialog [(visible)]="display3" modal="modal" width="500" responsive="true">
+    <p-header><h4>Cerere Intrerupere Studii</h4></p-header>
+    <table>
+        <td><i class="material-icons">error outline</i></td>
+        <td><h3>Introduceti datele necesare</h3><br></td>
+    </table>
+
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Serie si Numar C.I." pInputText [(ngModel)]="serie"/>
+        <!-- S-ar putea sa nu fie necesar -->
+    </div>
+
+    <div class="text-fields">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+    </div>
+
+    <div class="text-fields">
+        <p-inputMask [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
+                     placeholder="Anul Universitar"></p-inputMask>
+    </div>
+
+    <div class="text-fields">
+        <p-selectButton [options]="studies" [(ngModel)]="selectedStudy"></p-selectButton>
+    </div>
+
+    <div class="text-fields">
+        <p-checkbox [(ngModel)]="accept" binary="true" value="false"
+                    label="Vă rog să-mi aprobaţi cererea de retragere"></p-checkbox>
+    </div>
+
+    <div class="text-fields">
+        <input type="number" pInputText size="50" placeholder="Incepand cu semestrul" pInputText
+               [(ngModel)]="dinSemestrul"/>
+        <input type="number" pInputText size="50" placeholder="Al anului" pInputText [(ngModel)]="dinAnul"/>
+        <input type="number" pInputText size="50" placeholder="Pentru X semestre" pInputText
+               [(ngModel)]="pentruXSemestre"/>
+    </div>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button class="button" pButton icon="fa-check" (click)="sendInformation3()">TRIMITE</button>
+            <button md-button class="button" pButton icon="fa-close" (click)="display3=false">ANULEAZA</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<!-- ======================== PRIMUL POPUP ======================== -->
+<p-dialog [(visible)]="display4" modal="modal" width="500" responsive="true">
+    <p-header><h4>Cerere Diploma</h4></p-header>
+    <table>
+        <td><i class="material-icons">error outline</i></td>
+        <td><h3>Introduceti datele necesare</h3><br></td>
+    </table>
+
+    <div class="text-fields">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+    </div>
+
+    <div class="text-fields">
+        <p-inputMask [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
+                     placeholder="Anul Universitar"></p-inputMask>
+    </div>
+
+    <div class="text-fields">
+        <p-selectButton [options]="diplomaTypes" [(ngModel)]="selectedDiplomaType"></p-selectButton>
+    </div>
+
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Motiv" pInputText [(ngModel)]="motiv"/>
+    </div>
+
+    <div class="text-fields">
+        <p-checkbox [(ngModel)]="accept" binary="true" value="false"
+                    label="Vă rog să-mi aprobaţi împrumutul pentru 2 zile lucrătoare"></p-checkbox>
+    </div>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button class="button" pButton icon="fa-check" (click)="sendInformation4()">TRIMITE</button>
+            <button md-button class="button" pButton icon="fa-close" (click)="display4=false">ANULEAZA</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<!-- ======================== PRIMUL POPUP ======================== -->
+<p-dialog [(visible)]="display5" modal="modal" width="500" responsive="true">
+    <p-header><h4>Cerere Situatie Scolara</h4></p-header>
+    <table>
+        <td><i class="material-icons">error outline</i></td>
+        <td><h3>Introduceti datele necesare</h3><br></td>
+    </table>
+
+    <div class="text-fields">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+    </div>
+
+    <div class="text-fields">
+        <p-inputMask [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
+                     placeholder="Anul Universitar"></p-inputMask>
+    </div>
+
+    <div class="text-fields">
+        <p-selectButton [options]="studies" [(ngModel)]="selectedStudy"></p-selectButton>
+    </div>
+
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Motiv" pInputText [(ngModel)]="motiv"/>
+    </div>
+
+    <div class="text-fields">
+        <p-checkbox [(ngModel)]="accept" binary="true" value="false"
+                    label="Vă rog să-mi aprobați eliberarea situației școlare"></p-checkbox>
+    </div>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button class="button" pButton icon="fa-check" (click)="sendInformation5()">TRIMITE</button>
+            <button md-button class="button" pButton icon="fa-close" (click)="display5=false">ANULEAZA</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<!-- ======================== PRIMUL POPUP ======================== -->
+<p-dialog [(visible)]="display6" modal="modal" width="500" responsive="true">
+    <p-header><h4>Trimitere cerere</h4></p-header>
+    <table>
+        <td><i class="material-icons">error outline</i></td>
+        <td><h3>Introduceti datele necesare</h3><br></td>
+    </table>
+
+    <div class="text-fields">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+    </div>
+
+    <div class="text-fields">
+        <p-inputMask [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
+                     placeholder="Anul Universitar"></p-inputMask>
+    </div>
+
+    <div class="text-fields">
+        <p-selectButton [options]="examTypes" [(ngModel)]="selectedExamType"></p-selectButton>
+    </div>
+
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Tema lucrarii" pInputText [(ngModel)]="tema"/>
+    </div>
+
+    <div class="text-fields">
+        <input type="text" pInputText size="50" placeholder="Coordonator stiintific" pInputText [(ngModel)]="coordonator"/>
+    </div>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button class="button" pButton icon="fa-check" (click)="sendInformation6()">TRIMITE</button>
+            <button md-button class="button" pButton icon="fa-close" (click)="display6=false">ANULEAZA</button>
         </div>
     </p-footer>
 </p-dialog>
@@ -101,7 +269,7 @@
 
                     <md-card-actions class="active" align="end">
                         <li class="active">
-                            <button md-button class="button" (click)="showDialog2()" pButton>TRIMITE</button>
+                            <button md-button class="button" (click)="showDialog3()" pButton>TRIMITE</button>
                         </li>
                     </md-card-actions>
                 </md-card>
@@ -117,7 +285,7 @@
 
                     <md-card-actions class="active" align="end">
                         <li class="active">
-                            <button md-button class="button" (click)="showDialog1()" pButton>TRIMITE</button>
+                            <button md-button class="button" (click)="showDialog4()" pButton>TRIMITE</button>
                         </li>
                     </md-card-actions>
                 </md-card>
@@ -133,7 +301,7 @@
 
                     <md-card-actions class="active" align="end">
                         <li class="active">
-                            <button md-button class="button" (click)="showDialog2()" pButton>TRIMITE</button>
+                            <button md-button class="button" (click)="showDialog5()" pButton>TRIMITE</button>
                         </li>
                     </md-card-actions>
                 </md-card>
@@ -149,7 +317,7 @@
 
                     <md-card-actions class="active" align="end">
                         <li class="active">
-                            <button md-button class="button" (click)="showDialog2()" pButton>TRIMITE</button>
+                            <button md-button class="button" (click)="showDialog6()" pButton>TRIMITE</button>
                         </li>
                     </md-card-actions>
                 </md-card>
