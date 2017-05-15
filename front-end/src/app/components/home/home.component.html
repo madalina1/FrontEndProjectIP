@@ -1,4 +1,8 @@
-<!-- ======================== PRIMUL POPUP ======================== -->
+<div class="main-container">
+    <navbar></navbar>
+
+
+    <!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display1" modal="modal" width="500" responsive="true">
     <p-header><h4>Cerere Transport</h4></p-header>
 
@@ -25,7 +29,7 @@
     </p-footer>
 </p-dialog>
 
-<!-- ======================== PRIMUL POPUP ======================== -->
+    <!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display2" modal="modal" width="500" responsive="true">
     <p-header><h4>Cerere Retragere</h4></p-header>
 
@@ -65,7 +69,7 @@
     </p-footer>
 </p-dialog>
 
-<!-- ======================== PRIMUL POPUP ======================== -->
+    <!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display3" modal="modal" width="500" responsive="true">
     <p-header><h4>Cerere Intrerupere Studii</h4></p-header>
     <table>
@@ -112,7 +116,7 @@
     </p-footer>
 </p-dialog>
 
-<!-- ======================== PRIMUL POPUP ======================== -->
+    <!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display4" modal="modal" width="500" responsive="true">
     <p-header><h4>Cerere Diploma</h4></p-header>
     <table>
@@ -150,7 +154,7 @@
     </p-footer>
 </p-dialog>
 
-<!-- ======================== PRIMUL POPUP ======================== -->
+    <!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display5" modal="modal" width="500" responsive="true">
     <p-header><h4>Cerere Situatie Scolara</h4></p-header>
     <table>
@@ -188,7 +192,7 @@
     </p-footer>
 </p-dialog>
 
-<!-- ======================== PRIMUL POPUP ======================== -->
+    <!-- ======================== PRIMUL POPUP ======================== -->
 <p-dialog [(visible)]="display6" modal="modal" width="500" responsive="true">
     <p-header><h4>Trimitere cerere</h4></p-header>
     <table>
@@ -225,106 +229,110 @@
     </p-footer>
 </p-dialog>
 
-<div class="full-page">
+    <div class="full-page">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
 
-                <md-card class="my-card">
-                    <md-card-title-group>
-                        <md-card-title class="title">Cerere Transport</md-card-title>
-                        <i class="material-icons md-light">directions_bus</i>
-                    </md-card-title-group>
+                    <md-card class="my-card">
+                        <md-card-title-group>
+                            <md-card-title class="title">Cerere Transport</md-card-title>
+                            <i class="material-icons md-light">directions_bus</i>
+                        </md-card-title-group>
 
-                    <md-card-actions class="active" align="end">
-                        <li class="active">
-                            <button md-button class="button" (click)="showDialog1()" pButton>TRIMITE</button>
-                        </li>
-                    </md-card-actions>
-                </md-card>
-            </div> <!--first card-->
-            <div class="col-md-4">
+                        <md-card-actions class="active" align="end">
+                            <li class="active">
+                                <button md-button class="button" (click)="showDialog1()" pButton>TRIMITE</button>
+                            </li>
+                        </md-card-actions>
+                    </md-card>
+                </div> <!--first card-->
+                <div class="col-md-4">
 
-                <md-card class="my-card">
-                    <md-card-title-group>
-                        <md-card-title class="title">Cerere Retragere</md-card-title>
-                        <i class="material-icons md-light">exit_to_app</i>
-                    </md-card-title-group>
+                    <md-card class="my-card">
+                        <md-card-title-group>
+                            <md-card-title class="title">Cerere Retragere</md-card-title>
+                            <i class="material-icons md-light">exit_to_app</i>
+                        </md-card-title-group>
 
-                    <md-card-actions class="active" align="end">
-                        <li class="active">
-                            <button md-button class="button" (click)="showDialog2()" pButton>TRIMITE</button>
-                        </li>
-                    </md-card-actions>
-                </md-card>
-            </div> <!--second card-->
-            <div class="col-md-4">
+                        <md-card-actions class="active" align="end">
+                            <li class="active">
+                                <button md-button class="button" (click)="showDialog2()" pButton>TRIMITE</button>
+                            </li>
+                        </md-card-actions>
+                    </md-card>
+                </div> <!--second card-->
+                <div class="col-md-4">
 
-                <md-card class="my-card">
-                    <md-card-title-group>
-                        <md-card-title class="title">Cerere Intrerupere Studii</md-card-title>
-                        <i class="material-icons md-light">pause_circle_outline</i>
-                    </md-card-title-group>
+                    <md-card class="my-card">
+                        <md-card-title-group>
+                            <md-card-title class="title">Cerere Intrerupere Studii</md-card-title>
+                            <i class="material-icons md-light">pause_circle_outline</i>
+                        </md-card-title-group>
 
-                    <md-card-actions class="active" align="end">
-                        <li class="active">
-                            <button md-button class="button" (click)="showDialog3()" pButton>TRIMITE</button>
-                        </li>
-                    </md-card-actions>
-                </md-card>
-            </div> <!--third card-->
+                        <md-card-actions class="active" align="end">
+                            <li class="active">
+                                <button md-button class="button" (click)="showDialog3()" pButton>TRIMITE</button>
+                            </li>
+                        </md-card-actions>
+                    </md-card>
+                </div> <!--third card-->
 
-            <div class="col-md-4">
+                <div class="col-md-4">
 
-                <md-card class="my-card">
-                    <md-card-title-group>
-                        <md-card-title class="title">Cerere Diploma</md-card-title>
-                        <i class="material-icons md-light">school</i>
-                    </md-card-title-group>
+                    <md-card class="my-card">
+                        <md-card-title-group>
+                            <md-card-title class="title">Cerere Diploma</md-card-title>
+                            <i class="material-icons md-light">school</i>
+                        </md-card-title-group>
 
-                    <md-card-actions class="active" align="end">
-                        <li class="active">
-                            <button md-button class="button" (click)="showDialog4()" pButton>TRIMITE</button>
-                        </li>
-                    </md-card-actions>
-                </md-card>
-            </div> <!--forth card-->
+                        <md-card-actions class="active" align="end">
+                            <li class="active">
+                                <button md-button class="button" (click)="showDialog4()" pButton>TRIMITE</button>
+                            </li>
+                        </md-card-actions>
+                    </md-card>
+                </div> <!--forth card-->
 
-            <div class="col-md-4">
+                <div class="col-md-4">
 
-                <md-card class="my-card">
-                    <md-card-title-group>
-                        <md-card-title class="title">Cerere Situatie Scolara</md-card-title>
-                        <i class="material-icons md-light">info_outline</i>
-                    </md-card-title-group>
+                    <md-card class="my-card">
+                        <md-card-title-group>
+                            <md-card-title class="title">Cerere Situatie Scolara</md-card-title>
+                            <i class="material-icons md-light">info_outline</i>
+                        </md-card-title-group>
 
-                    <md-card-actions class="active" align="end">
-                        <li class="active">
-                            <button md-button class="button" (click)="showDialog5()" pButton>TRIMITE</button>
-                        </li>
-                    </md-card-actions>
-                </md-card>
-            </div>  <!--fifth card-->
+                        <md-card-actions class="active" align="end">
+                            <li class="active">
+                                <button md-button class="button" (click)="showDialog5()" pButton>TRIMITE</button>
+                            </li>
+                        </md-card-actions>
+                    </md-card>
+                </div>  <!--fifth card-->
 
-            <div class="col-md-4">
+                <div class="col-md-4">
 
-                <md-card class="my-card">
-                    <md-card-title-group>
-                        <md-card-title class="title">Cerere Inscriere Licenta</md-card-title>
-                        <i class="material-icons md-light">description</i>
-                    </md-card-title-group>
+                    <md-card class="my-card">
+                        <md-card-title-group>
+                            <md-card-title class="title">Cerere Inscriere Licenta</md-card-title>
+                            <i class="material-icons md-light">description</i>
+                        </md-card-title-group>
 
-                    <md-card-actions class="active" align="end">
-                        <li class="active">
-                            <button md-button class="button" (click)="showDialog6()" pButton>TRIMITE</button>
-                        </li>
-                    </md-card-actions>
-                </md-card>
-            </div> <!--fifth card-->
+                        <md-card-actions class="active" align="end">
+                            <li class="active">
+                                <button md-button class="button" (click)="showDialog6()" pButton>TRIMITE</button>
+                            </li>
+                        </md-card-actions>
+                    </md-card>
+                </div> <!--fifth card-->
 
 
-        </div><!--final row-->
-    </div><!--final container-->
+            </div><!--final row-->
+        </div><!--final container-->
 
+    </div>
+
+
+    <my-footer class="my-ft"></my-footer>
 </div>

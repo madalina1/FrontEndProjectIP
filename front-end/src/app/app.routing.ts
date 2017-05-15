@@ -7,7 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 
 /** Routes for all our pages in the app **/
 export const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'transportDoc', component: TransportDocComponent},
   {path: 'history', component: HistoryComponent},

@@ -10,12 +10,12 @@
 }
 
 .wrapper md-toolbar {
-
+    margin-bottom: 7%;
 }
 
 .container {
-  margin-top: 10%;
-  margin-bottom: 10%;
+    margin-top: 15%;
+    width: 100%;
 }
 
 @media screen and (max-width: 1280px) {
