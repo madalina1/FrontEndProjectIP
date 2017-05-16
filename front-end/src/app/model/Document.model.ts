@@ -1,6 +1,5 @@
 /**
- * Clasa Document dupa care se vor extinde celelalte
- * clase cu documente
+ * Document class which will be extended by other types of documents
  */
 export class Document {
   public id: number;
