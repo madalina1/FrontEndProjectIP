@@ -7,15 +7,23 @@
     padding: 0;
     border: 0;
     vertical-align: baseline;
+    width: 100%;
+    display: table;
 }
+
+router-outlet {
+    position: absolute;
+    display: table-row;
+}
+
 
 .wrapper md-toolbar {
     margin-bottom: 7%;
 }
 
-.container {
-    margin-top: 15%;
-    width: 100%;
+.cont {
+    margin-top: 10%;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 1280px) {

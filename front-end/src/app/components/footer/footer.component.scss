@@ -1,24 +1,17 @@
 .app-footer{
-  display: block;
   background-color: #5D5D5D;
   color: white;
   text-align: center;
   font-size: 1em;
   width: 100%;
-
   margin: 0;
+  overflow-y: auto;
 }
 
-.app-footer > :last-child {
-  margin-bottom: 0;
-}
-
-.app-footer.major {
-  padding-top: 3em;
-}
-
-#footer {
+footer {
   padding: 4em 0 4em 0;
+  z-index: 1;
+  width: 100%;
 }
 
 /*Normal screen*/

@@ -1,9 +1,3 @@
-
-.full-page {
-  margin-top: 50px;
-  margin-bottom: 25px;
-}
-
 .container {
   margin-bottom: 10%;
 }
@@ -64,14 +58,9 @@ table, tr, td {
   color: white;
 }
 
-div.horizontalRule {
+.horizontal {
   width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  background-color: #d1d1d1;
-  height: 0.5px;
-  margin-top: 1px;
-  margin-bottom: 1px;
+  position: relative;
 }
 
 .button {
