@@ -6,6 +6,11 @@ nav {
   z-index: 1;
 }
 
+
+.nav:hover{
+font-weight: bold;
+}
+
 nav #container {
   margin-top: 4%;
   margin-left: 0;
@@ -165,11 +170,13 @@ input::-webkit-search-cancel-button {
 }
 
 input[type=search] {
-  background: #E2C223 url('../../../assets/img/search-01-01.png') no-repeat 9px center;
+ background: #E2C223 url('../../../assets/img/search-01-01.png') no-repeat 9px center;
   background-size: 55%;
   border: solid 1px #E2C223;
   padding: 7px 15px 7px 32px;
   width: 55px;
+
+
 
   box-shadow: 1px 1px 8px #666;
 
