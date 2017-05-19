@@ -6,7 +6,7 @@ nav {
   z-index: 1;
 }
 
-nav #container {
+nav #cont {
   margin-top: 4%;
   margin-left: 0;
   margin-right: 0;
@@ -65,7 +65,7 @@ nav #container {
     height: 25%;
   }
 
-  nav #container {
+  nav #cont {
     margin-top: 4%;
     margin-left: 0;
     margin-right: 0;
@@ -84,7 +84,7 @@ nav #container {
     text-shadow: 2px 2px 8px #1E1E1E;
     text-align: center;
     padding-left: 15%;
-    font-size: 1.4em;
+    font-size: 1em;
     align-content: center;
   }
 
@@ -92,18 +92,21 @@ nav #container {
     background-color: #3C718E;
     color: white;
     border: none;
-    height: 25%;
+    height: 16%;
   }
 
-  nav #container {
-    margin-top: 4%;
+  nav #cont {
     margin-left: 0;
     margin-right: 0;
     background-color: #336277;
-    padding: 0.7em 0 0.2em 0;
     text-align: center;
     border: 0;
-    height: 35%;
+    height: 100%;
+  }
+  .btn2 {
+    align-content: right;
+    float: right;
+    margin-bottom: 3%;
   }
 }
 
@@ -111,28 +114,27 @@ nav #container {
   .banner {
     text-shadow: 2px 2px 8px #1E1E1E;
     text-align: center;
-    padding-left: 2%;
+    padding-left: 8%;
     padding-right: 2%;
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   nav {
     background-color: #3C718E;
     color: white;
     border: none;
-    height: 15%;
+    height: 16%;
   }
 
-  nav #container {
-    margin-top: 4%;
+  nav #cont {
     margin-left: 0;
     margin-right: 0;
     background-color: #336277;
-    padding: 0.7em 0 0.2em 0;
     text-align: center;
     border: 0;
-    height: 35%;
+    height: 100%;
   }
+
 }
 
 a {

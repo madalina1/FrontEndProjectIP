@@ -4,8 +4,12 @@
         Deconectare
     </button>
 
+    <button class="visible-xs btn btn2" routerLink="/login">
+        <span class="glyphicon glyphicon-off"> </span>
+    </button>
+
     <h1 class="banner">FII DOCUMENTS FLOW</h1>
-    <div id="container">
+    <div id="cont">
 
         <!--HOME btn-->
 
@@ -20,16 +24,17 @@
 
             <!--home btn which whill show on small screen-->
         <button class="visible-xs btn" data-toggle="collapse" data-target=".navbar-collapse"
-                routerLink="history">
+                routerLink="/history">
                 ISTORIC
             </button>
         <button class="visible-xs btn" data-toggle="collapse" data-target=".navbar-collapse"
-                routerLink="home">
+                routerLink="/home">
                 LISTA DOCUMENTE
             </button>
 
-        <form id="demo-2" style="position:absolute; transition: .5s ease; top: 90%; left: 75%;">
-            <input type="search" placeholder="Search">
+
+        <form class="hidden-xs" id="demo-2" style="position:absolute; transition: .5s ease; top: 90%; left: 75%;">
+            <input type="search">
         </form>
     </div>
 </nav>

@@ -27,23 +27,23 @@ router-outlet {
 }
 
 @media screen and (max-width: 1280px) {
-    .container {
-        margin-top: 8%;
-        margin-bottom: 8%;
+    .cont {
+        margin-top: 10%;
+        margin-bottom: 0;
     }
 }
 
 @media screen and (max-width: 840px) {
-    .container {
-        margin-top: 5%;
-        margin-bottom: 5%;
+    .cont {
+        margin-top: 10%;
+        margin-bottom: 0;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .container {
-        margin-top: 15%;
-        margin-bottom: 15%;
+    .cont {
+        margin-top: 30%;
+        margin-bottom: 0;
     }
 }
 
