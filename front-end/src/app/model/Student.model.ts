@@ -3,30 +3,30 @@
  */
 
 export class Student {
-  private id: number;
-  private matricol_number: string;
-  private first_name: string;
-  private last_name: string;
-  private cnp: number;
-  private identity_card_id: string;
-  private father_initial: string;
-  private adress: String;
-  private webmail: String;
-  private birth_date: String;
-  private password: String;
+  public id: number;
+  public matricolNumber: string;
+  public firstName: string;
+  public lastName: string;
+  public cnp: number;
+  public identityCardId: string;
+  public fatherInitial: string;
+  public adress: String;
+  public webmail: String;
+  public birthDate: String;
+  public password: String;
 
 
   constructor(object: any) {
     this.id = object.id;
-    this.matricol_number = object.matricol_number;
-    this.first_name = object.first_name;
-    this.last_name = object.last_name;
+    this.matricolNumber = object.matricol_number;
+    this.firstName = object.first_name;
+    this.lastName = object.last_name;
     this.cnp = object.cnp;
-    this.identity_card_id = object.identity_card_id;
-    this.father_initial = object.father_initial;
+    this.identityCardId = object.identity_card_id;
+    this.fatherInitial = object.father_initial;
     this.adress = object.adress;
     this.webmail = object.webmail;
-    this.birth_date = object.birth_date;
+    this.birthDate = object.birth_date;
     this.password = object.password;
   }
 }

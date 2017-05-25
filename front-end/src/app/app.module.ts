@@ -12,10 +12,17 @@ import { TransportDocComponent } from './components/transportDoc/transportDoc.co
 import { HomeComponent } from './components/home/home.component';
 import { routing } from './app.routing';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AccordionModule, DialogModule, InputTextModule, DropdownModule, CheckboxModule, InputMaskModule, SelectButtonModule } from 'primeng/primeng'; //accordion and accordion tab
+import {
+  AccordionModule,
+  DialogModule,
+  InputTextModule,
+  DropdownModule,
+  CheckboxModule,
+  InputMaskModule,
+  SelectButtonModule
+} from 'primeng/primeng'; //accordion and accordion tab
 import { LoginService } from './services/login.service';
 import { LoginComponent } from './components/login/login.component';
-import { MenuItem } from 'primeng/components/common/api';
 
 @NgModule({
   declarations: [
