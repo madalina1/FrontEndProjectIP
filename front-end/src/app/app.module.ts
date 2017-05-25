@@ -25,9 +25,6 @@ import {
 import { LoginService } from './services/login.service';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/index';
-import { LoginService } from './services/login.service';
-import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './guards/index';
 
 @NgModule({
   declarations: [
