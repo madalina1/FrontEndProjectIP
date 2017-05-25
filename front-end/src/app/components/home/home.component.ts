@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/api';
-
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { TransportRequestDoc } from '../../model/TransportRequestDoc.model';
+import { WithdrawalRequestDoc } from '../../model/WithdrawalRequestDoc.model';
+import { InterruptionRequestDoc } from '../../model/InterruptionRequestDoc.model';
+import { DiplomaRequestDoc } from '../../model/DiplomaRequestDoc.model';
+import { ScolarSituationRequestDoc } from '../../model/ScolarSituationRequestDoc.model';
+import { LicenseRequestDoc } from '../../model/LicenseRequestDoc.model';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +14,14 @@ import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms'
 })
 
 export class HomeComponent implements OnInit {
+
+  anulAbsolvirii: number;
+  competentaLingvisticaSum: number;
+  repetareExamenSum: number;
+
+  phoneNumber: string;
+  competentaLingvisticaDate: string;
+  repetareExamenDate: string;
 
   serie: string;
   an: string;
@@ -66,8 +78,7 @@ export class HomeComponent implements OnInit {
 
     this.courses = [];
     this.courses.push({label: 'Cursuri de Zi', value: 'Cursuri de Zi'});
-    this.courses.push({label: 'Cursuri de Noapte', value: 'Cursuri de Noapte'});
-    this.courses.push({label: 'Cursuri de Pranz', value: 'Cursuri de Pranz'});
+    this.courses.push({label: 'Fara Frecventa', value: 'Fara Frecventa'});
 
     this.years = [];
     this.years.push({label: 'INFO1', value: {id: 1, name: 'INFO1', code: 'INFO1'}});
@@ -169,15 +180,43 @@ export class HomeComponent implements OnInit {
     return (!this.coordonator);
   }
 
+  checkAnulAbsolvirii() {
+    return (!this.anulAbsolvirii);
+  }
+
+  checkCompetentaLingvisticaSum() {
+    return (!this.competentaLingvisticaSum);
+  }
+
+  checkRepetareExamenSum() {
+    return (!this.repetareExamenSum);
+  }
+
+  checkCompetentaLingvisticaDate() {
+    return (!this.competentaLingvisticaDate);
+  }
+
+  checkRepetareExamenDate() {
+    return (!this.repetareExamenDate);
+  }
+
+  checkPhoneNumber() {
+    return ((!this.phoneNumber) || (this.phoneNumber.length != 10));
+  }
+
   /////////////////////////////// AFISAREA PUPUP-URILOR SI TRIMITEREA INFORMATIILOR ////////////////////////////////////
   showDialog1() {
     this.display1 = true;
   }
 
   sendInformation1() {
-    if(this.checkSerie() || this.checkSelectedYear())
+    if (this.checkSerie() || this.checkSelectedYear())
       this.showDialogError();
     else {
+      let document = new TransportRequestDoc('');
+      document.documentName = 'TransportRequestDocument';
+      document.nrSeriesId = this.serie;
+      document.yearOfStudy = 69; //this.selectedYear
       this.showDialogSuccess();
       this.display1 = false;
     }
@@ -188,14 +227,19 @@ export class HomeComponent implements OnInit {
   }
 
   sendInformation2() {
-    if(this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
-        this.checkSelectedCourse() || this.checkAccept())
+    if (this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
+      this.checkSelectedCourse() || this.checkAccept())
       this.showDialogError();
     else {
+      let document = new WithdrawalRequestDoc('');
+      document.documentName = 'WithdrawalDocumentRequest';
+      document.series = this.serie;
+      document.studyYear = 69; // this.selectedYear
+      document.universityYear = 666; // this.an
+      document.typeOfCourses = this.selectedCourse;
       this.showDialogSuccess();
       this.display2 = false;
     }
-    //serie, selectedYear, an, selectedCourse, accept
   }
 
   showDialog3() {
@@ -203,16 +247,28 @@ export class HomeComponent implements OnInit {
   }
 
   sendInformation3() {
-    if(this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
+    if (this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
       this.checkSelectedStudy() || this.checkAccept() || this.checkDinSemestrul() ||
       this.checkDinAnul() || this.checkPentruXSemestre())
       this.showDialogError();
     else {
+      let document = new InterruptionRequestDoc('');
+      document.documentName = 'InterruptionRequestDocument';
+      document.currentYear = 33231; // this.an;
+      document.yearOfStudy = 666; // this.selectedYear
+      document.startingSemester = this.dinSemestrul;
+      document.fromUniversityYear = this.dinAnul;
+      document.numberOfSemesters = this.pentruXSemestre;
+      // send serie
+      // send selectedYear
+      // send an
+      // send selectedStudy??
+      // send dinSemestrul
+      // send dinAnul
+      // send PentruXSemestre
       this.showDialogSuccess();
       this.display3 = false;
     }
-
-    //serie, selectedYear, an,  selectedStudy, accept, dinSemestrul, dinAnul, pentruXSemestre
   }
 
   showDialog4() {
@@ -220,14 +276,17 @@ export class HomeComponent implements OnInit {
   }
 
   sendInformation4() {
-    if(this.checkSelectedStudentType() || this.checkSelectedYear() || this.checkAn() ||
+    if (this.checkSelectedStudentType() || this.checkSelectedYear() || this.checkAn() ||
       this.checkSelectedDiplomaType() || this.checkAccept() || this.checkMotiv())
       this.showDialogError();
     else {
+      let document = new DiplomaRequestDoc(this.serie);
+      document.documentName = 'DiplomaDocumentRequest';
+      document.currentYear = 33231; // this.an;
+      document.yearOfStudy = 666; // this.selectedYear
       this.showDialogSuccess();
       this.display4 = false;
     }
-    //selectedStudentType, selectedYear, an, dimplomaType, motiv, accept
   }
 
   showDialog5() {
@@ -235,14 +294,19 @@ export class HomeComponent implements OnInit {
   }
 
   sendInformation5() {
-    if(this.checkAn() || this.checkSelectedStudentType() ||this.checkSelectedStudy() ||
+    if (this.checkAn() || this.checkSelectedYear() || this.checkSelectedStudy() ||
       this.checkAccept() || this.checkMotiv())
       this.showDialogError();
     else {
+      let document = new ScolarSituationRequestDoc(this.serie);
+      document.documentName = 'ScolarSituationDocument';
+      document.currentYear = 33231; // this.an;
+      document.yearOfStudy = 666; // this.selectedYear
+
+      // send selectedStudy
       this.showDialogSuccess();
       this.display5 = false;
     }
-    //selectedYear, an, SelectedStudy, motiv, accept
   }
 
   showDialog6() {
@@ -250,14 +314,27 @@ export class HomeComponent implements OnInit {
   }
 
   sendInformation6() {
-    if(this.checkAn() || this.checkSelectedStudentType() ||this.checkSelectedExamType() ||
-      this.checkTema() || this.checkCoordonator())
+    if (this.checkAnulAbsolvirii() || this.checkSelectedExamType() ||
+        this.checkCompetentaLingvisticaDate() || this.checkCompetentaLingvisticaSum() ||
+        this.checkRepetareExamenDate() || this.checkRepetareExamenSum() ||
+      this.checkTema() || this.checkCoordonator() || this.checkPhoneNumber())
       this.showDialogError();
     else {
+      let document = new LicenseRequestDoc(this.serie);
+      document.documentName = 'LicenseRegistrationForm';
+      document.graduationYear = this.anulAbsolvirii;
+      document.dateReceiptLinguisticCompetence = this.competentaLingvisticaDate;
+      document.paymentReceiptLinguisticCompetence = this.competentaLingvisticaSum;
+      document.dateReceiptRedoLicenseExam = this.repetareExamenDate;
+      document.paymentReceiptRedoLicenseExam = this.repetareExamenSum;
+      document.licenseTopic = this.tema;
+      document.coordinatorProf = this.coordonator;
+      document.currentDateToday = this.phoneNumber;
+
+      // send selectedExamType
       this.showDialogSuccess();
       this.display6 = false;
     }
-    //selectedYear, an, Examtype, tema, coordonator
   }
 
 }
