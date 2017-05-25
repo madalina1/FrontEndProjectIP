@@ -51,7 +51,8 @@
 
     <div class="text-fields">
         <label> *</label>
-        <p-dropdown required [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+        <p-dropdown required [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu"
+                    [style]="{overflow:'visible', width:'50%'}"></p-dropdown>
     </div>
 
     <p-footer>
@@ -172,7 +173,7 @@
     <p-header><h4>Cerere Diploma</h4></p-header>
     <table>
         <td><i class="material-icons">error outline</i></td>
-        <td><h3>Introduceti datele necesare. Toate campurile sunt obligatorii!</h3><br></td>
+        <td><h3>Introduceti datele necesare. Campurile cu * sunt obligatorii!</h3><br></td>
     </table>
 
     <div class="text-fields">
@@ -221,7 +222,7 @@
     <p-header><h4>Cerere Situatie Scolara</h4></p-header>
     <table>
         <td><i class="material-icons">error outline</i></td>
-        <td><h3>Introduceti datele necesare. Toate campurile sunt obligatorii!</h3><br></td>
+        <td><h3>Introduceti datele necesare. Campurile cu * sunt obligatorii!</h3><br></td>
     </table>
 
     <div class="text-fields">
@@ -264,23 +265,31 @@
     <p-header><h4>Trimitere cerere</h4></p-header>
     <table>
         <td><i class="material-icons">error outline</i></td>
-        <td><h3>Introduceti datele necesare. Toate campurile sunt obligatorii!</h3><br></td>
+        <td><h3>Introduceti datele necesare. Campurile cu * sunt obligatorii!</h3><br></td>
     </table>
 
     <div class="text-fields">
         <label> *</label>
-        <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
-    </div>
-
-    <div class="text-fields">
-        <label> *</label>
-        <p-inputMask [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
-                     placeholder="Anul Universitar"></p-inputMask>
+        <input required type="number" pInputText size="40" placeholder="Anul Absolvirii" [(ngModel)]="anulAbsolvirii"/>
     </div>
 
     <div class="text-fields">
         <label> *</label>
         <p-selectButton [options]="examTypes" [(ngModel)]="selectedExamType"></p-selectButton>
+    </div>
+
+    <div class="text-fields">
+        <h1> Chitanţa certificat competenţă lingvistică </h1>
+        <label> *</label>
+        <input type="text" required pInputText size="20" placeholder="Data" [(ngModel)]="competentaLingvisticaDate"/>
+        <label> *</label>
+        <input type="number" required pInputText size="20" placeholder="Suma" [(ngModel)]="competentaLingvisticaSum"/>
+    </div>
+
+    <div class="text-fields">
+        <h1> Chitanţă repetare examen de licenţă (unde este cazul) </h1>
+        <input type="text" pInputText size="20" placeholder="Data" [(ngModel)]="repetareExamenDate"/>
+        <input type="number" pInputText size="20" placeholder="Suma"  [(ngModel)]="repetareExamenSum"/>
     </div>
 
     <div class="text-fields">
@@ -291,6 +300,11 @@
     <div class="text-fields">
         <label> *</label>
         <input type="text" pInputText size="40" placeholder="Coordonator stiintific" [(ngModel)]="coordonator"/>
+    </div>
+
+    <div class="text-fields">
+        <label> *</label>
+        <input type="text" required minlength="10" maxlength="10" pInputText size="40" placeholder="Numar Telefon" [(ngModel)]="phoneNumber"/>
     </div>
 
     <p-footer>
