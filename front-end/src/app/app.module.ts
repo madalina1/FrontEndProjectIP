@@ -21,8 +21,13 @@ import {
   InputMaskModule,
   SelectButtonModule
 } from 'primeng/primeng'; //accordion and accordion tab
+//accordion and accordion tab
 import { LoginService } from './services/login.service';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/index';
+import { LoginService } from './services/login.service';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/index';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,7 @@ import { LoginComponent } from './components/login/login.component';
     InputMaskModule,
     SelectButtonModule,
   ],
-  providers: [LoginService],
+  providers: [AuthGuard, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
