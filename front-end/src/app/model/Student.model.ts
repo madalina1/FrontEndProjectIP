@@ -18,15 +18,15 @@ export class Student {
 
   constructor(object: any) {
     this.id = object.id;
-    this.matricolNumber = object.matricol_number;
-    this.firstName = object.first_name;
-    this.lastName = object.last_name;
+    this.matricolNumber = object.matricolNumber;
+    this.firstName = object.firstName;
+    this.lastName = object.lastName;
     this.cnp = object.cnp;
-    this.identityCardId = object.identity_card_id;
-    this.fatherInitial = object.father_initial;
+    this.identityCardId = object.identityCardId;
+    this.fatherInitial = object.fatherInitial;
     this.adress = object.adress;
     this.webmail = object.webmail;
-    this.birthDate = object.birth_date;
+    this.birthDate = object.birthDate;
     this.password = object.password;
   }
 }
