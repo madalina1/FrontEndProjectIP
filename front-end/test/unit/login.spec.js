@@ -36,7 +36,7 @@ describe("Unit Tests", function() {
                'mihaia@dascalitei@info.uaicro'
         ''
       ];*/
-*/ no need to chec is not ok emails because we do have just OkEmails */
+*/ no need to check if it is EmailIsNotOk because we do have just OkEmails */
 
       /*for (var i in EmailIsOk) {
         var ok = Services.checkEmail(EmailIsOk[i]);
