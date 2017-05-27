@@ -59,6 +59,7 @@
     </div>
 
     <div class="text-fields">
+        <label>*</label>
        <select required
                (change)="triggerYear($event.target.value)">
         <option
@@ -67,16 +68,7 @@
         </option>
 
        </select>
-           <!--
-        <label>*</label>
-        <p-dropdown
-                   (change)="triggerYear($event.target.value)"
-                    required
-                    [options]="years"
-                    [(ngModel)]="selectedYear"
-                    placeholder="Alege anul de studiu"
-                    [style]="{width:'50%'}"
-        ></p-dropdown>-->
+
     </div>
 
     <p-footer>
@@ -98,23 +90,47 @@
 
     <div class="text-fields">
         <label> *</label>
-        <input type="text" pInputText required minlength="8" maxlength="8" size="40" placeholder="Serie si Numar C.I" [(ngModel)]="serie"/>
+        <input type="text"
+               pInputText
+               required
+               minlength="8"
+               maxlength="8"
+               size="40"
+               placeholder="Serie si Numar C.I"
+               [(ngModel)]="serie"
+               (change)="triggerId($event.target.value)"/>
+    </div>
+
+    <div class="text-fields">
+        <label>*</label>
+        <select required
+                (change)="triggerYear($event.target.value)">
+            <option
+                    *ngFor="let year of years; let i = index"   [attr.data-index]="i">
+                {{ year}}
+            </option>
+
+        </select>
+
     </div>
 
     <div class="text-fields">
         <label> *</label>
-        <p-dropdown required [options]="years" [(ngModel)]="selectedYear" placeholder="Alege anul de studiu" [style]="{width:'50%'}"></p-dropdown>
+
+            <input type="text" (change)="triggerYear($event.target.value)">
     </div>
 
     <div class="text-fields">
         <label> *</label>
-        <p-inputMask required [(ngModel)]="an" mask="9999-9999" slotChar="2016-2017"
-                     placeholder="Anul Universitar"></p-inputMask>
-    </div>
+        <select required
+                (change)="triggerCourse($event.target.value)">
+            <option
+                    *ngFor="let course of courses; let i = index"   [attr.data-index]="i">
+                {{ course}}
+            </option>
 
-    <div class="text-fields">
-        <label> *</label>
-        <p-selectButton required [options]="courses" [(ngModel)]="selectedCourse"></p-selectButton>
+        </select>
+
     </div>
 
     <div class="text-fields">

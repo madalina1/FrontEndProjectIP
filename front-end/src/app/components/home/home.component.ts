@@ -3,6 +3,8 @@ import { SelectItem } from 'primeng/components/common/api';
 import { TransportInput } from '../../model/TransportInput.model';
 import { TransportDocService } from '../../services/transportDoc.service';
 import { Request } from '../../model/Request.model';
+import { WithdrawalInput } from '../../model/WithdrawalInput.model';
+import { WithdrawalDocService } from '../../services/withdrawalDoc.service';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
   studentTypes: SelectItem[];
   selectedStudentType: string;
 
-  courses: SelectItem[];
+  public courses = Array<String>();
   selectedCourse: string;
 
   //years: SelectItem[];
@@ -43,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   public years = Array<String>();
 
-  constructor(private  transportService : TransportDocService) {
+  constructor(private  transportService : TransportDocService, private withdrawalService : WithdrawalDocService) {
     this.examTypes = [];
     this.examTypes.push({label: 'Licenta', value: {id: 1, name: 'Licenta', code: 'Licenta'}});
     this.examTypes.push({label: 'Disertatie', value: {id: 2, name: 'Disertatie', code: 'Disertatie'}});
@@ -67,9 +69,9 @@ export class HomeComponent implements OnInit {
     this.studies.push({label: 'Master', value: {id: 2, name: 'Master', code: 'Master'}});
 
     this.courses = [];
-    this.courses.push({label: 'Cursuri de Zi', value: 'Cursuri de Zi'});
-    this.courses.push({label: 'Cursuri de Noapte', value: 'Cursuri de Noapte'});
-    this.courses.push({label: 'Cursuri de Pranz', value: 'Cursuri de Pranz'});
+    this.courses.push("Cursuri de Zi");
+    this.courses.push("Cursuri de Noapte");
+    this.courses.push("Cursuri de Pranz");
 
     this.years = [];
     this.years.push("INFO1");
@@ -178,16 +180,6 @@ export class HomeComponent implements OnInit {
     this.display2 = true;
   }
 
-  sendInformation2() {
-    if(this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
-        this.checkSelectedCourse() || this.checkAccept())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display2 = false;
-    }
-    //serie, selectedYear, an, selectedCourse, accept
-  }
 
   showDialog3() {
     this.display3 = true;
@@ -278,20 +270,55 @@ export class HomeComponent implements OnInit {
         .subscribe((data) => this.send(data),
           (error) => this.showError());
     }
+
+    this.display1 = false;
   }
+
+
+/**WITHDRAWAL POPUP **/
+  public withdrawalYear : string;
+  public withdrwalUniYear : string;
+  public withdrawalCourse : string;
+
+  public triggerUnivYear(value){
+    this.withdrwalUniYear = value.toString();
+    console.log(this.withdrwalUniYear);
+  }
+
+  public triggerCourse(value) {
+    this.withdrawalCourse = value.toString();
+    console.log(this.withdrawalCourse);
+  }
+
+
+  sendInformation2() {
+    if(this.checkSerie() )
+      this.showDialogError();
+    else {
+      let input = new WithdrawalInput(this.transportId, this.transportYear,this.withdrwalUniYear,this.withdrawalCourse);
+      console.log(input.course);
+      console.log(input.nrSeriesId);
+      console.log(input.yearOfStudy);
+
+      this.withdrawalService.sendWithdrawalRequest(input)
+        .subscribe((data) => this.send(data),
+          (error) => this.showError());
+
+      this.display2 = false;
+    }
+    //serie, selectedYear, an, selectedCourse, accept
+  }
+
 
   private send(data: any){
     let request = new Request(data);
     console.log(request.id);
 
     this.showDialogSuccess();
-    this.display1 = false;
   }
 
   private showError(){
     console.log("Couldn't send request");
   }
-
-
 
 }
