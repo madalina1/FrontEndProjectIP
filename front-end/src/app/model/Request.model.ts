@@ -1,7 +1,8 @@
+
 export class Request {
-  private id: number;
-  private studentId: number;
-  private documentId: number;
+  public id: number;
+  public studentId: number;
+  public documentId: number;
 
   constructor(object: any) {
     this.id = object.id;

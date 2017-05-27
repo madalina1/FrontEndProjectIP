@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, ResponseContentType } from '@angular/http';
+import { Http, ResponseContentType, Headers } from '@angular/http';
+import { TransportInput } from '../model/TransportInput.model';
 
 @Injectable()
 
@@ -12,22 +13,18 @@ export class TransportDocService {
   private backendUrl: string;
 
   constructor(private _http: Http) {
-    /** url momentan unul random..dar aici o sa punem pathul catre controllerul din
-     * backend care se va ocupa de preluarea unui anumit tip de fisier pdf
-     *
-     */
-    this.backendUrl = "https://vadimdez.github.io/ng2-pdf-viewer/pdf-test.pdf"
+    this.backendUrl = "http://localhost:9666/app";
   }
 
-  /** GET-ul efectiv **/
-  downloadPDF(): any {
-    return this._http.get(this.backendUrl,
-      {responseType: ResponseContentType.Blob}).map(
-      (res) => {
-        return new Blob([res.blob()], {type: 'application/pdf'})
-      }
-    )
-  }
 
+  sendTransportRequest(transport: TransportInput) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this._http.post(
+      this.backendUrl + '/transport/insert/'+ localStorage.getItem("id"),
+      transport,
+      {headers: headers})
+      .map(res => res.json());
+  }
 
 }

@@ -72,6 +72,7 @@ export class LoginComponent {
       console.log(student.lastName);
 
       localStorage.setItem("id", student.id.toString());
+      localStorage.setItem("name",student.firstName);
 
       this._service.login();
 
