@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, ResponseContentType, Headers } from '@angular/http';
 import { TransportInput } from '../model/TransportInput.model';
+import { WithdrawalInput } from '../model/WithdrawalInput.model';
 
 @Injectable()
 
@@ -8,7 +9,7 @@ import { TransportInput } from '../model/TransportInput.model';
  *  Avem la dispoztie un URL de unde preluam PDF pe care il dorim
  * **/
 
-export class TransportDocService {
+export class WithdrawalDocService {
 
   private backendUrl: string;
 
@@ -16,13 +17,13 @@ export class TransportDocService {
     this.backendUrl = "http://localhost:9666/app";
   }
 
-
-  sendTransportRequest(transport: TransportInput) {
+  sendWithdrawalRequest(withdrawal: WithdrawalInput) {
+    console.log('ajung aici');
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.post(
-      this.backendUrl + '/transport/insert/'+ localStorage.getItem("id"),
-      transport,
+      this.backendUrl + '/withdrawalDocumentRequest/insert/'+ localStorage.getItem("id"),
+      withdrawal,
       {headers: headers})
       .map(res => res.json());
   }

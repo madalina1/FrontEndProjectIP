@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/api';
-
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { TransportInput } from '../../model/TransportInput.model';
+import { TransportDocService } from '../../services/transportDoc.service';
+import { Request } from '../../model/Request.model';
+import { WithdrawalInput } from '../../model/WithdrawalInput.model';
+import { WithdrawalDocService } from '../../services/withdrawalDoc.service';
 
 @Component({
   selector: 'app-home',
@@ -25,23 +28,24 @@ export class HomeComponent implements OnInit {
 
   examTypes: SelectItem[];
   selectedExamType: string;
-
   diplomaTypes: SelectItem[];
   selectedDiplomaType: string;
 
   studentTypes: SelectItem[];
   selectedStudentType: string;
 
-  courses: SelectItem[];
+  public courses = Array<String>();
   selectedCourse: string;
 
-  years: SelectItem[];
+  //years: SelectItem[];
   selectedYear: string;
 
   studies: SelectItem[];
   selectedStudy: string;
 
-  constructor() {
+  public years = Array<String>();
+
+  constructor(private  transportService : TransportDocService, private withdrawalService : WithdrawalDocService) {
     this.examTypes = [];
     this.examTypes.push({label: 'Licenta', value: {id: 1, name: 'Licenta', code: 'Licenta'}});
     this.examTypes.push({label: 'Disertatie', value: {id: 2, name: 'Disertatie', code: 'Disertatie'}});
@@ -65,24 +69,21 @@ export class HomeComponent implements OnInit {
     this.studies.push({label: 'Master', value: {id: 2, name: 'Master', code: 'Master'}});
 
     this.courses = [];
-    this.courses.push({label: 'Cursuri de Zi', value: 'Cursuri de Zi'});
-    this.courses.push({label: 'Cursuri de Noapte', value: 'Cursuri de Noapte'});
-    this.courses.push({label: 'Cursuri de Pranz', value: 'Cursuri de Pranz'});
+    this.courses.push("Cursuri de Zi");
+    this.courses.push("Cursuri de Noapte");
+    this.courses.push("Cursuri de Pranz");
 
     this.years = [];
-    this.years.push({label: 'INFO1', value: {id: 1, name: 'INFO1', code: 'INFO1'}});
-    this.years.push({label: 'INFO2', value: {id: 2, name: 'INFO2', code: 'INFO2'}});
-    this.years.push({label: 'INFO3', value: {id: 3, name: 'INFO3', code: 'INFO3'}});
-    this.years.push({label: 'MISS1', value: {id: 4, name: 'MISS1', code: 'MISS1'}});
-    this.years.push({label: 'MISS2', value: {id: 5, name: 'MISS2', code: 'MISS2'}});
-    this.years.push({label: 'MLC1', value: {id: 6, name: 'MLC1', code: 'MLC1'}});
-    this.years.push({label: 'MLC2', value: {id: 7, name: 'MLC2', code: 'MLC2'}});
-    this.years.push({label: 'MOC1', value: {id: 8, name: 'MOC1', code: 'MOC1'}});
-    this.years.push({label: 'MOC2', value: {id: 9, name: 'MOC2', code: 'MOC2'}});
-    this.years.push({label: 'MSD1', value: {id: 10, name: 'MSD1', code: 'MSD1'}});
-    this.years.push({label: 'MSD2', value: {id: 11, name: 'MSD2', code: 'MSD2'}});
-    this.years.push({label: 'MSI1', value: {id: 12, name: 'MSI1', code: 'MSI1'}});
-    this.years.push({label: 'MSI2', value: {id: 13, name: 'MSI2', code: 'MSI2'}});
+    this.years.push("INFO1");
+    this.years.push("INFO2");
+    this.years.push("INFO3");
+    this.years.push("MISS1");
+    this.years.push("MISS2");
+    this.years.push("MLC1");
+    this.years.push("MLC2");
+    this.years.push("MOC1");
+    this.years.push("MSD1");
+
   }
 
   ngOnInit() {
@@ -174,29 +175,11 @@ export class HomeComponent implements OnInit {
     this.display1 = true;
   }
 
-  sendInformation1() {
-    if(this.checkSerie() || this.checkSelectedYear())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display1 = false;
-    }
-  }
 
   showDialog2() {
     this.display2 = true;
   }
 
-  sendInformation2() {
-    if(this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
-        this.checkSelectedCourse() || this.checkAccept())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display2 = false;
-    }
-    //serie, selectedYear, an, selectedCourse, accept
-  }
 
   showDialog3() {
     this.display3 = true;
@@ -258,6 +241,84 @@ export class HomeComponent implements OnInit {
       this.display6 = false;
     }
     //selectedYear, an, Examtype, tema, coordonator
+  }
+
+
+  /** TRANSPORT POPUP **/
+  public transportId   : string;
+  public transportYear : string;
+
+  public triggerId(value) {
+      this.transportId = value.toString();
+      console.log(this.transportId);
+  }
+
+  public triggerYear(value){
+    this.transportYear = value.toString();
+    console.log(this.transportYear);
+  }
+
+  sendInformation1() {
+    if(this.checkSerie())
+      this.showDialogError();
+    else {
+      let transportInput = new TransportInput(this.transportId,this.transportYear);
+      console.log(transportInput.yearOfStudy);
+      console.log(transportInput.nrSeriesId);
+
+      this.transportService.sendTransportRequest(transportInput)
+        .subscribe((data) => this.send(data),
+          (error) => this.showError());
+    }
+
+    this.display1 = false;
+  }
+
+
+/**WITHDRAWAL POPUP **/
+  public withdrawalYear : string;
+  public withdrwalUniYear : string;
+  public withdrawalCourse : string;
+
+  public triggerUnivYear(value){
+    this.withdrwalUniYear = value.toString();
+    console.log(this.withdrwalUniYear);
+  }
+
+  public triggerCourse(value) {
+    this.withdrawalCourse = value.toString();
+    console.log(this.withdrawalCourse);
+  }
+
+
+  sendInformation2() {
+    if(this.checkSerie() )
+      this.showDialogError();
+    else {
+      let input = new WithdrawalInput(this.transportId, this.transportYear,this.withdrwalUniYear,this.withdrawalCourse);
+      console.log(input.course);
+      console.log(input.nrSeriesId);
+      console.log(input.yearOfStudy);
+
+      this.withdrawalService.sendWithdrawalRequest(input)
+        .subscribe((data) => this.send(data),
+          (error) => this.showError());
+
+      this.display2 = false;
+    }
+    //serie, selectedYear, an, selectedCourse, accept
+  }
+
+
+  private send(data: any){
+    let request = new Request(data);
+    console.log(request.id);
+
+    this.showDialogSuccess();
+  }
+
+  private showError(){
+    console.log("Couldn't send request");
   }
 
 }

@@ -13,20 +13,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td data-title="ID">1</td>
-                <td data-title="TIP CERERE">Cerere de transport</td>
-                <td data-title="STATUS">Complet</td>
-            </tr>
-            <tr>
-                <td data-title="ID">2</td>
-                <td data-title="TIP CERERE">Cerere SCTP</td>
-                <td data-title="STATUS">In asteptare...</td>
-            </tr>
-            <tr>
-                <td data-title="ID">3</td>
-                <td data-title="TIP CERERE">Cerere de transport</td>
-                <td data-title="STATUS">Complet</td>
+
+            <tr *ngFor="let doc of documentArray; let i = index" [attr.data-index]="i">
+                <td data-title="ID">{{i}}</td>
+                <td data-title="TIP CERERE">{{ doc.documentName }}
+                </td>
+                <td data-title="STATUS">{{ i}}</td>
             </tr>
             </tbody>
         </table>

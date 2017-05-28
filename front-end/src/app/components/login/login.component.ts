@@ -32,7 +32,7 @@ export class LoginComponent {
    */
 
   login() {
-
+    console.log('AICI');
     this._service.authentificate(this.user)
       .subscribe(
         (data) => this.retrieveData(data),
@@ -61,14 +61,19 @@ export class LoginComponent {
   retrieveData(responseData: any) {
     console.log("Successfully logged in");
     let student = new Student(responseData);
+
+
     if (student.id == null) {
       this.errorMsg = 'Webmail si/sau parola gresita!'
     } else {
 
-      localStorage.setItem("id", student.id.toString());
 
       console.log(student.firstName);
       console.log(student.lastName);
+
+      localStorage.setItem("id", student.id.toString());
+      localStorage.setItem("name",student.firstName);
+
       this._service.login();
 
     }

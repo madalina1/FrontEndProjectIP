@@ -24,7 +24,8 @@ import {
 //accordion and accordion tab
 import { LoginService } from './services/login.service';
 import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './guards/index';
+import { TransportDocService } from './services/transportDoc.service';
+import {  WithdrawalDocService } from './services/withdrawalDoc.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { AuthGuard } from './guards/index';
     InputMaskModule,
     SelectButtonModule,
   ],
-  providers: [AuthGuard, LoginService],
+  providers: [LoginService,TransportDocService,WithdrawalDocService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
