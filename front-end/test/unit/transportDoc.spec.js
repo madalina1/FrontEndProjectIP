@@ -12,7 +12,7 @@ describe("Unit Tests", function() {
 
   beforeEach(angular.mock.module('front-end'));
 
-  it('LoginControl Controller', function() {
+  it('TransportControl Controller', function() {
     expect(app.components.transportDoc).toBeDefined();
   });
 

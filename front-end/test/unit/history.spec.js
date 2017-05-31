@@ -11,7 +11,7 @@ describe("Unit Tests", function() {
 
   beforeEach(angular.mock.module('front-end'));
 
-  it('LoginControl Controller', function() {
+  it('HistoryControl Controller', function() {
     expect(app.components.history).toBeDefined();
   });
 
