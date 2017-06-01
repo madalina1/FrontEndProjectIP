@@ -22,7 +22,7 @@ describe("Unit Tests", function() {
       expect(Services.isValidDate).not.to.equal(null);
 
 
-      var DateIsOk[0] = 'XR 389718'; /* this is how it should look like */
+      var DateIsOk[0] = 'XR 389718';
 
       var DateIsNotOk[0] = '389718 XR';
 

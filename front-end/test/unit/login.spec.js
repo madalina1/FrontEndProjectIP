@@ -24,8 +24,8 @@ describe("Unit Tests", function() {
 
 
 
-      var EmailIsOk[0] = 'ionut.mtu.1993@gmail.com'; /* this is how it should look like */
-
+     var EmailIsOk[0] = 'adascalitei.mihai96@gmail.com';
+      +      var EmailIsOk[1] = 'ionut.mtu.1993@gmail.com';
 
     }])
   );

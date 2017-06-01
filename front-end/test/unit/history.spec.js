@@ -15,14 +15,13 @@ describe("Unit Tests", function() {
     expect(app.components.history).toBeDefined();
   });
 
-  it('must have URL adress service', inject(['Services',
+  it('must have a URL adress service', inject(['Services',
     function(Services) {
       expect(Services.isValidAdress).not.to.equal(null);
 
 
 
-      var AdressIsOk[0] = 'http://localhost:9666/app/document/history/'; /* this is how it should look like */
-
+      var AdressIsOk[0] = 'http://localhost:9666/app/document/history/';
     }])
   );
 });
