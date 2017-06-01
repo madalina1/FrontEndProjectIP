@@ -5,9 +5,6 @@ import { WithdrawalInput } from '../model/WithdrawalInput.model';
 
 @Injectable()
 
-/** Serviciul ce ne va ajuta si in momentul cand o sa legam cu backendul
- *  Avem la dispoztie un URL de unde preluam PDF pe care il dorim
- * **/
 
 export class WithdrawalDocService {
 
@@ -22,10 +19,12 @@ export class WithdrawalDocService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.post(
-      this.backendUrl + '/withdrawalDocumentRequest/insert/'+ localStorage.getItem("id"),
+      this.backendUrl +'/withdrawalDocumentRequest/insert/'+ localStorage.getItem("id"),
       withdrawal,
       {headers: headers})
-      .map(res => res.json());
+      .map(res => res.json() ,   console.log(localStorage.getItem("id"))
+  );
+
   }
 
 }
