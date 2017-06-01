@@ -26,6 +26,7 @@ import { LoginService } from './services/login.service';
 import { LoginComponent } from './components/login/login.component';
 import { TransportDocService } from './services/transportDoc.service';
 import {  WithdrawalDocService } from './services/withdrawalDoc.service';
+import { ScolarSituationDocService } from './services/scolarSituationDoc.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import {  WithdrawalDocService } from './services/withdrawalDoc.service';
     InputMaskModule,
     SelectButtonModule,
   ],
-  providers: [LoginService,TransportDocService,WithdrawalDocService],
+  providers: [LoginService,TransportDocService,WithdrawalDocService,ScolarSituationDocService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

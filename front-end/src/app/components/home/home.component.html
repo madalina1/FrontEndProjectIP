@@ -282,7 +282,7 @@
     <div class="text-fields">
         <label>*</label>
         <select required
-                (change)="triggerYear($event.target.value)">
+                (change)="triggerYearSituation($event.target.value)">
             <option
                     *ngFor="let year of years; let i = index" [attr.data-index]="i">
                 {{ year}}
@@ -298,7 +298,7 @@
                size="40"
                placeholder="Anul universitar"
                [(ngModel)]="an"
-               (change)="triggerUnivYear($event.target.value)"/>
+               (change)="triggerUnivYearSituation($event.target.value)"/>
     </div>
 
 
