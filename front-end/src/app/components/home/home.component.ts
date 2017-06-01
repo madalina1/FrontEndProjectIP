@@ -68,9 +68,9 @@ export class HomeComponent implements OnInit {
     this.studies.push({label: 'Master', value: {id: 2, name: 'Master', code: 'Master'}});
 
     this.courses = [];
-    this.courses.push("Cursuri de Zi");
-    this.courses.push("Cursuri de Noapte");
-    this.courses.push("Cursuri de Pranz");
+    this.courses.push("Tipuri de cursuri")
+    this.courses.push("Cursuri fara frecventa");
+    this.courses.push("Cursuri frecventa normala");
 
     this.years = [];
     this.years.push("INFO1");
