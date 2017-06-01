@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
   public courses = Array<String>();
   selectedCourse: string;
 
-  //years: SelectItem[];
   selectedYear: string;
 
   studies: SelectItem[];
@@ -69,9 +68,9 @@ export class HomeComponent implements OnInit {
     this.studies.push({label: 'Master', value: {id: 2, name: 'Master', code: 'Master'}});
 
     this.courses = [];
-    this.courses.push("Cursuri de Zi");
-    this.courses.push("Cursuri de Noapte");
-    this.courses.push("Cursuri de Pranz");
+    this.courses.push("Tipuri de cursuri")
+    this.courses.push("Cursuri fara frecventa");
+    this.courses.push("Cursuri frecventa normala");
 
     this.years = [];
     this.years.push("INFO1");
@@ -290,15 +289,29 @@ export class HomeComponent implements OnInit {
     console.log(this.withdrawalCourse);
   }
 
+  public studyYear : string;
+  public  triggerYearWithdrawal(value){
+    this.studyYear = value.toString();
+  }
+
+  public currentYear : string;
+  public triggerCurrentYearWithdrawal(value){
+    this.currentYear = value.toString();
+  }
 
   sendInformation2() {
     if(this.checkSerie() )
       this.showDialogError();
     else {
-      let input = new WithdrawalInput(this.transportId, this.transportYear,this.withdrwalUniYear,this.withdrawalCourse);
+
+
+      console.log('inainte' + this.studyYear);
+      console.log('inainte' + this.currentYear);
+      let input = new WithdrawalInput(this.transportId,this.currentYear,this.studyYear,this.withdrawalCourse);
       console.log(input.course);
       console.log(input.nrSeriesId);
-      console.log(input.yearOfStudy);
+      console.log(input.yearOfStudy);//INFO
+      console.log(input.currentYear);
 
       this.withdrawalService.sendWithdrawalRequest(input)
         .subscribe((data) => this.send(data),

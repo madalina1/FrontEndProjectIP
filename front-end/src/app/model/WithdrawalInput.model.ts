@@ -6,10 +6,10 @@ export class WithdrawalInput{
   public course : string;
 
 
-  constructor (public nr: string, public  year:string, public cYear : string, public _course : string) {
+  constructor (public nr: string, public  year: string, public cYear : string, public _course : string) {
     this.nrSeriesId = nr;
-    this.yearOfStudy = year;
-    this.currentYear = cYear;
+    this.yearOfStudy = cYear;
+    this.currentYear = year;
     this.course = _course;
   }
 }
