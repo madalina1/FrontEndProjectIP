@@ -2,9 +2,9 @@ export class ScolarSituationRequestDoc extends Document {
   public id: number;
   public documentName: string;
   public studentName: string;
-  public currentYear: number;
-  public yearOfStudy: number;
-  public hasBroughtReceipt: string
+  public currentYear: string;
+  public yearOfStudy: string;
+  public hasBroughtReceipt: string;
 
   constructor(object: any) {
     super();
