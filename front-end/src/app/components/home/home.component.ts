@@ -9,6 +9,7 @@ import { InterruptionInput } from '../../model/InterruptionInput.model';
 import { DiplomaInput } from '../../model/DiplomaInput.model';
 import { ScolarSituationInput } from '../../model/ScolarSituationInput.model';
 import { LicenseInput } from '../../model/LincenseInput.model';
+import { ScolarSituationDocService } from '../../services/scolarSituationDoc.service';
 
 @Component({
   selector: 'app-home',
@@ -48,7 +49,8 @@ export class HomeComponent implements OnInit {
 
   public studies = Array<String>();
 
-  constructor(private  transportService: TransportDocService, private withdrawalService: WithdrawalDocService) {
+  constructor(private  transportService: TransportDocService, private withdrawalService: WithdrawalDocService,private scolarService : ScolarSituationDocService)
+  {
     this.examTypes = [];
     this.examTypes.push("Licenta");
     this.examTypes.push("Disertatie");
@@ -254,11 +256,11 @@ export class HomeComponent implements OnInit {
     else {
       console.log('inainte' + this.studyYear);
       console.log('inainte' + this.currentYear);
-      let input = new WithdrawalInput(this.transportId, this.currentYear, this.studyYear, this.withdrawalCourse);
+      let input = new WithdrawalInput(this.transportId, this.studyYear, this.currentYear, this.withdrawalCourse);
       console.log(input.course);
       console.log(input.nrSeriesId);
-      console.log(input.yearOfStudy);//INFO
-      console.log(input.currentYear);
+      console.log('yearOfStudy'+ input.yearOfStudy);
+      console.log('current Year' + input.currentYear);
 
       this.withdrawalService.sendWithdrawalRequest(input)
         .subscribe((data) => this.send(data),
@@ -266,6 +268,7 @@ export class HomeComponent implements OnInit {
 
       this.showDialogSuccess();
     }
+
     this.display2 = false;
   }
 
@@ -314,11 +317,7 @@ export class HomeComponent implements OnInit {
       console.log(input.startingSemester);
       console.log(input.fromUniversityYear);
       console.log(input.numberOfSemesters);
-      /*
-       this.withdrawalService.sendInterruptionRequest(input)
-       .subscribe((data) => this.send(data),
-       (error) => this.showError());
-       */
+
 
       this.showDialogSuccess();
     }
@@ -335,11 +334,6 @@ export class HomeComponent implements OnInit {
       console.log(input.currentYear);
       console.log(input.yearOfStudy);
 
-      /*
-       this.withdrawalService.sendDiplomaRequest(input)
-       .subscribe((data) => this.send(data),
-       (error) => this.showError());
-       */
 
     }
     this.display4 = false;
@@ -356,20 +350,27 @@ export class HomeComponent implements OnInit {
     console.log(this.hasReceipt);
   }
 
+  public yearOfStudy : string;
+  public  triggerYearSituation(value){
+    this.yearOfStudy = value.toString();
+  }
+
+  public currentYearSituation : string;
+  public triggerUnivYearSituation(value){
+    this.currentYearSituation = value.toString();
+  }
+
   sendInformation5() {
-    if (this.checkAn() || this.checkAccept())
+    if (this.checkAn())
       this.showDialogError();
     else {
-      let input = new ScolarSituationInput(this.studyYear, this.currentYear, this.hasReceipt);
+      let input = new ScolarSituationInput(this.yearOfStudy, this.currentYearSituation);
       console.log(input.yearOfStudy);
       console.log(input.currentYear);
-      console.log(input.hasBroughtReceipt);
-      /*
-       this.withdrawalService.sendScolarSituationRequest(input)
-       .subscribe((data) => this.send(data),
-       (error) => this.showError());
-       */
 
+      this.scolarService.sendSituationRequest(input)
+        .subscribe((data) => this.send(data),
+          (error) => this.showError());
       this.showDialogSuccess();
     }
     this.display5 = false;
@@ -449,11 +450,6 @@ export class HomeComponent implements OnInit {
       console.log(input.licenseTopic);
       console.log(input.coordinatorProf);
       console.log(input.phoneNumber);
-      /*
-       this.withdrawalService.sendLicenseRequest(input)
-       .subscribe((data) => this.send(data),
-       (error) => this.showError());
-       */
 
       this.showDialogSuccess();
     }
