@@ -22,34 +22,11 @@ describe("Unit Tests", function() {
     function(Services) {
       expect(Services.isValidEmail).not.to.equal(null);
 
-     /* var EmailIsOk = [
-        'adascalitei.mihai96@gmail.com',
-        'punk.ripe@yahoo.com',
-        'mihai.adascalitei@info.uaic.ro'
-      ];*/
 
-      var EmailIsOk[0] = 'adascalitei.mihai96@gmail.com'; /* this is how it should look like */
 
-     /*  var EmailIsNotOk = [
-       'adascalitei@.mihai96gmailcom',
-               '@punkripe@yahoo.com',
-               'mihaia@dascalitei@info.uaicro'
-        ''
-      ];*/
-/* no need to check if it is EmailIsNotOk because we do have just OkEmails */
+      var EmailIsOk[0] = 'ionut.mtu.1993@gmail.com'; /* this is how it should look like */
 
-      /*for (var i in EmailIsOk) {
-        var ok = Services.checkEmail(EmailIsOk[i]);
-        expect(ok).toBeTruthy();
-      }
-      for (var i in EmailIsNotOk) {
-        var ok = Services.checkEmail(EmailIsNotOk[i]);
-        expect(ok).toBeFalsy();
-      }
-           
-  No loops needed for testing*/
 
-/* no if conditions , no loops , just variables */ 
     }])
   );
 });
