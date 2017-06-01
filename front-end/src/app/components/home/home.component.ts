@@ -5,6 +5,10 @@ import { TransportDocService } from '../../services/transportDoc.service';
 import { Request } from '../../model/Request.model';
 import { WithdrawalInput } from '../../model/WithdrawalInput.model';
 import { WithdrawalDocService } from '../../services/withdrawalDoc.service';
+import { InterruptionInput } from '../../model/InterruptionInput.model';
+import { DiplomaInput } from '../../model/DiplomaInput.model';
+import { ScolarSituationInput } from '../../model/ScolarSituationInput.model';
+import { LicenseInput } from '../../model/LincenseInput.model';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +18,13 @@ import { WithdrawalDocService } from '../../services/withdrawalDoc.service';
 
 export class HomeComponent implements OnInit {
 
+  anulAbsolvirii: number;
+  competentaLingvisticaSum: number;
+  repetareExamenSum: number;
+
+  competentaLingvisticaDate: string;
+  repetareExamenDate: string;
+
   serie: string;
   an: string;
   accept: boolean = false;
@@ -22,53 +33,40 @@ export class HomeComponent implements OnInit {
   dinAnul: number;
   pentruXSemestre: number;
 
-  motiv: string;
   tema: string;
   coordonator: string;
 
-  examTypes: SelectItem[];
-  selectedExamType: string;
-  diplomaTypes: SelectItem[];
-  selectedDiplomaType: string;
+  public examTypes = Array<String>();
 
-  studentTypes: SelectItem[];
-  selectedStudentType: string;
+  public diplomaTypes = Array<String>();
+
+  public studentTypes = Array<String>();
 
   public courses = Array<String>();
-  selectedCourse: string;
-
-  selectedYear: string;
-
-  studies: SelectItem[];
-  selectedStudy: string;
 
   public years = Array<String>();
 
-  constructor(private  transportService : TransportDocService, private withdrawalService : WithdrawalDocService) {
+  public studies = Array<String>();
+
+  constructor(private  transportService: TransportDocService, private withdrawalService: WithdrawalDocService) {
     this.examTypes = [];
-    this.examTypes.push({label: 'Licenta', value: {id: 1, name: 'Licenta', code: 'Licenta'}});
-    this.examTypes.push({label: 'Disertatie', value: {id: 2, name: 'Disertatie', code: 'Disertatie'}});
+    this.examTypes.push("Licenta");
+    this.examTypes.push("Disertatie");
 
     this.diplomaTypes = [];
-    this.diplomaTypes.push({
-      label: 'Diploma de Bacalaureat',
-      value: {id: 1, name: 'Diploma de Bacalaureat', code: 'Diploma de Bacalaureat'}
-    });
-    this.diplomaTypes.push({
-      label: 'Diploma de Licenta',
-      value: {id: 2, name: 'Diploma de Licenta', code: 'Diploma de Licenta'}
-    });
+    this.diplomaTypes.push("Diploma de Bacalaureat");
+    this.diplomaTypes.push("Diploma de Licenta");
 
     this.studentTypes = [];
-    this.studentTypes.push({label: 'Student', value: {id: 1, name: 'Student', code: 'Student'}});
-    this.studentTypes.push({label: 'Cursant', value: {id: 2, name: 'Cursant', code: 'Cursant'}});
+    this.studentTypes.push("Student");
+    this.studentTypes.push("Cursant");
 
     this.studies = [];
-    this.studies.push({label: 'Licenta', value: {id: 1, name: 'Licenta', code: 'Licenta'}});
-    this.studies.push({label: 'Master', value: {id: 2, name: 'Master', code: 'Master'}});
+    this.studies.push("Licenta");
+    this.studies.push("Master");
 
     this.courses = [];
-    this.courses.push("Tipuri de cursuri")
+    this.courses.push("Tipuri de cursuri");
     this.courses.push("Cursuri fara frecventa");
     this.courses.push("Cursuri frecventa normala");
 
@@ -82,7 +80,6 @@ export class HomeComponent implements OnInit {
     this.years.push("MLC2");
     this.years.push("MOC1");
     this.years.push("MSD1");
-
   }
 
   ngOnInit() {
@@ -113,24 +110,12 @@ export class HomeComponent implements OnInit {
     return ((this.serie.length != 8) || (!this.serie));
   }
 
-  checkSelectedYear() {
-    return (!this.selectedYear);
-  }
-
   checkAn() {
     return (!this.an);
   }
 
-  checkSelectedCourse() {
-    return (!this.selectedCourse);
-  }
-
   checkAccept() {
     return (!this.accept);
-  }
-
-  checkSelectedStudy() {
-    return (!this.selectedStudy);
   }
 
   checkDinSemestrul() {
@@ -145,22 +130,6 @@ export class HomeComponent implements OnInit {
     return ((!this.pentruXSemestre) || (this.pentruXSemestre < 1));
   }
 
-  checkSelectedStudentType() {
-    return (!this.selectedStudentType);
-  }
-
-  checkSelectedDiplomaType() {
-    return (!this.selectedDiplomaType);
-  }
-
-  checkMotiv() {
-    return (!this.motiv);
-  }
-
-  checkSelectedExamType() {
-    return (!this.selectedExamType);
-  }
-
   checkTema() {
     return (!this.tema);
   }
@@ -169,117 +138,95 @@ export class HomeComponent implements OnInit {
     return (!this.coordonator);
   }
 
+  checkAnulAbsolvirii() {
+    return (!this.anulAbsolvirii);
+  }
+
+  checkCompetentaLingvisticaSum() {
+    return (!this.competentaLingvisticaSum);
+  }
+
+  checkRepetareExamenSum() {
+    return (!this.repetareExamenSum);
+  }
+
+  checkCompetentaLingvisticaDate() {
+    return (!this.competentaLingvisticaDate);
+  }
+
+  checkRepetareExamenDate() {
+    return (!this.repetareExamenDate);
+  }
+
+  checkPhoneNumber() {
+    return ((!this.phoneNumber) || (this.phoneNumber.length != 10));
+  }
+
   /////////////////////////////// AFISAREA PUPUP-URILOR SI TRIMITEREA INFORMATIILOR ////////////////////////////////////
   showDialog1() {
     this.display1 = true;
   }
 
-
   showDialog2() {
     this.display2 = true;
   }
 
-
   showDialog3() {
     this.display3 = true;
-  }
-
-  sendInformation3() {
-    if(this.checkSerie() || this.checkSelectedYear() || this.checkAn() ||
-      this.checkSelectedStudy() || this.checkAccept() || this.checkDinSemestrul() ||
-      this.checkDinAnul() || this.checkPentruXSemestre())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display3 = false;
-    }
-
-    //serie, selectedYear, an,  selectedStudy, accept, dinSemestrul, dinAnul, pentruXSemestre
   }
 
   showDialog4() {
     this.display4 = true;
   }
 
-  sendInformation4() {
-    if(this.checkSelectedStudentType() || this.checkSelectedYear() || this.checkAn() ||
-      this.checkSelectedDiplomaType() || this.checkAccept() || this.checkMotiv())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display4 = false;
-    }
-    //selectedStudentType, selectedYear, an, dimplomaType, motiv, accept
-  }
-
   showDialog5() {
     this.display5 = true;
-  }
-
-  sendInformation5() {
-    if(this.checkAn() || this.checkSelectedStudentType() ||this.checkSelectedStudy() ||
-      this.checkAccept() || this.checkMotiv())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display5 = false;
-    }
-    //selectedYear, an, SelectedStudy, motiv, accept
   }
 
   showDialog6() {
     this.display6 = true;
   }
 
-  sendInformation6() {
-    if(this.checkAn() || this.checkSelectedStudentType() ||this.checkSelectedExamType() ||
-      this.checkTema() || this.checkCoordonator())
-      this.showDialogError();
-    else {
-      this.showDialogSuccess();
-      this.display6 = false;
-    }
-    //selectedYear, an, Examtype, tema, coordonator
-  }
-
 
   /** TRANSPORT POPUP **/
-  public transportId   : string;
-  public transportYear : string;
+  public transportId: string;
+  public transportYear: string;
 
   public triggerId(value) {
-      this.transportId = value.toString();
-      console.log(this.transportId);
+    this.transportId = value.toString();
+    console.log(this.transportId);
   }
 
-  public triggerYear(value){
+  public triggerYear(value) {
     this.transportYear = value.toString();
     console.log(this.transportYear);
   }
 
   sendInformation1() {
-    if(this.checkSerie())
+    if (this.checkSerie())
       this.showDialogError();
     else {
-      let transportInput = new TransportInput(this.transportId,this.transportYear);
+      let transportInput = new TransportInput(this.transportId, this.transportYear);
       console.log(transportInput.yearOfStudy);
       console.log(transportInput.nrSeriesId);
 
       this.transportService.sendTransportRequest(transportInput)
         .subscribe((data) => this.send(data),
           (error) => this.showError());
+
+      this.showDialogSuccess();
     }
 
     this.display1 = false;
   }
 
 
-/**WITHDRAWAL POPUP **/
-  public withdrawalYear : string;
-  public withdrwalUniYear : string;
-  public withdrawalCourse : string;
+  /**WITHDRAWAL POPUP **/
+  public withdrawalYear: string;
+  public withdrwalUniYear: string;
+  public withdrawalCourse: string;
 
-  public triggerUnivYear(value){
+  public triggerUnivYear(value) {
     this.withdrwalUniYear = value.toString();
     console.log(this.withdrwalUniYear);
   }
@@ -289,25 +236,25 @@ export class HomeComponent implements OnInit {
     console.log(this.withdrawalCourse);
   }
 
-  public studyYear : string;
-  public  triggerYearWithdrawal(value){
+  public studyYear: string;
+
+  public triggerYearWithdrawal(value) {
     this.studyYear = value.toString();
   }
 
-  public currentYear : string;
-  public triggerCurrentYearWithdrawal(value){
+  public currentYear: string;
+
+  public triggerCurrentYearWithdrawal(value) {
     this.currentYear = value.toString();
   }
 
   sendInformation2() {
-    if(this.checkSerie() )
+    if (this.checkSerie())
       this.showDialogError();
     else {
-
-
       console.log('inainte' + this.studyYear);
       console.log('inainte' + this.currentYear);
-      let input = new WithdrawalInput(this.transportId,this.currentYear,this.studyYear,this.withdrawalCourse);
+      let input = new WithdrawalInput(this.transportId, this.currentYear, this.studyYear, this.withdrawalCourse);
       console.log(input.course);
       console.log(input.nrSeriesId);
       console.log(input.yearOfStudy);//INFO
@@ -317,21 +264,200 @@ export class HomeComponent implements OnInit {
         .subscribe((data) => this.send(data),
           (error) => this.showError());
 
-      this.display2 = false;
+      this.showDialogSuccess();
     }
-    //serie, selectedYear, an, selectedCourse, accept
+    this.display2 = false;
   }
 
-
-  private send(data: any){
+  private send(data: any) {
     let request = new Request(data);
     console.log(request.id);
 
     this.showDialogSuccess();
   }
 
-  private showError(){
+  private showError() {
     console.log("Couldn't send request");
+  }
+
+
+  /**STUDIES INTERRUPTION POPUP **/
+
+  public interruptionStartingSem: number;
+  public interruptionFromUnivYear: number;
+  public interruptionNumberOfSem: number;
+
+  public triggerStartingSem(value) {
+    this.interruptionStartingSem = value.toString();
+    console.log(this.interruptionStartingSem);
+  }
+
+  public triggerFromUnivYear(value) {
+    this.interruptionFromUnivYear = value.toString();
+    console.log(this.interruptionFromUnivYear);
+  }
+
+  public triggerNumberOfSem(value) {
+    this.interruptionNumberOfSem = value.toString();
+    console.log(this.interruptionNumberOfSem);
+  }
+
+  sendInformation3() {
+    if (this.checkAn() || this.checkAccept() || this.checkDinSemestrul() ||
+      this.checkDinAnul() || this.checkPentruXSemestre())
+      this.showDialogError();
+    else {
+      let input = new InterruptionInput(this.studyYear, this.currentYear, this.interruptionStartingSem,
+        this.interruptionFromUnivYear, this.interruptionNumberOfSem);
+      console.log(input.currentYear);
+      console.log(input.yearOfStudy);
+      console.log(input.startingSemester);
+      console.log(input.fromUniversityYear);
+      console.log(input.numberOfSemesters);
+      /*
+       this.withdrawalService.sendInterruptionRequest(input)
+       .subscribe((data) => this.send(data),
+       (error) => this.showError());
+       */
+
+      this.showDialogSuccess();
+    }
+    this.display3 = false;
+  }
+
+  /** DIPLOMA REQUEST POPUP **/
+
+  sendInformation4() {
+    if (this.checkAn() || this.checkAccept())
+      this.showDialogError();
+    else {
+      let input = new DiplomaInput(this.currentYear, this.studyYear);
+      console.log(input.currentYear);
+      console.log(input.yearOfStudy);
+
+      /*
+       this.withdrawalService.sendDiplomaRequest(input)
+       .subscribe((data) => this.send(data),
+       (error) => this.showError());
+       */
+
+    }
+    this.display4 = false;
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////
+
+  /** SCOLAR SITUATION POPUP **/
+
+  public hasReceipt: string;
+
+  public triggerHasReceipt(value) {
+    this.hasReceipt = value.toString();
+    console.log(this.hasReceipt);
+  }
+
+  sendInformation5() {
+    if (this.checkAn() || this.checkAccept())
+      this.showDialogError();
+    else {
+      let input = new ScolarSituationInput(this.studyYear, this.currentYear, this.hasReceipt);
+      console.log(input.yearOfStudy);
+      console.log(input.currentYear);
+      console.log(input.hasBroughtReceipt);
+      /*
+       this.withdrawalService.sendScolarSituationRequest(input)
+       .subscribe((data) => this.send(data),
+       (error) => this.showError());
+       */
+
+      this.showDialogSuccess();
+    }
+    this.display5 = false;
+  }
+
+  /** LICENSE REGISTRATION POPUP **/
+
+  public graduationYear: number;
+
+  public triggerGraduationYear(value) {
+    this.graduationYear = value.toString();
+    console.log(this.graduationYear);
+  }
+
+  public dateReceiptLinguisticCompetence: string;
+
+  public triggerDateReceiptLinguisticCompetence(value) {
+    this.dateReceiptLinguisticCompetence = value.toString();
+    console.log(this.dateReceiptLinguisticCompetence);
+  }
+
+  public paymentReceiptLinguisticCompetence: number;
+
+  public triggerPaymentReceiptLinguisticCompetence(value) {
+    this.paymentReceiptLinguisticCompetence = value.toString();
+    console.log(this.paymentReceiptLinguisticCompetence);
+  }
+
+  public dateReceiptRedoLicenseExam: string;
+
+  public triggerDateReceiptRedoLicenseExam(value) {
+    this.dateReceiptRedoLicenseExam = value.toString();
+    console.log(this.dateReceiptRedoLicenseExam);
+  }
+
+  public paymentReceiptRedoLicenseExam: number;
+
+  public triggerPaymentReceiptRedoLicenseExam(value) {
+    this.paymentReceiptRedoLicenseExam = value.toString();
+    console.log(this.paymentReceiptRedoLicenseExam);
+  }
+
+  public licenseTopic: string;
+
+  public triggerLicenseTopic(value) {
+    this.licenseTopic = value.toString();
+    console.log(this.licenseTopic);
+  }
+
+  public coordinatorProf: string;
+
+  public triggerCoordinatorProf(value) {
+    this.coordinatorProf = value.toString();
+    console.log(this.coordinatorProf);
+  }
+
+  public phoneNumber: string;
+
+  public triggerPhoneNumber(value) {
+    this.phoneNumber = value.toString();
+    console.log(this.phoneNumber);
+  }
+
+  sendInformation6() {
+    if (this.checkAnulAbsolvirii() || this.checkCompetentaLingvisticaDate() || this.checkCompetentaLingvisticaSum() ||
+      this.checkRepetareExamenDate() || this.checkRepetareExamenSum() ||
+      this.checkTema() || this.checkCoordonator() || this.checkPhoneNumber())
+      this.showDialogError();
+    else {
+      let input = new LicenseInput(this.graduationYear, this.dateReceiptLinguisticCompetence, this.paymentReceiptLinguisticCompetence,
+        this.dateReceiptRedoLicenseExam, this.paymentReceiptRedoLicenseExam, this.licenseTopic, this.coordinatorProf, this.phoneNumber);
+      console.log(input.graduationYear);
+      console.log(input.dateReceiptLinguisticCompetence);
+      console.log(input.paymentReceiptLinguisticCompetence);
+      console.log(input.dateReceiptRedoLicenseExam);
+      console.log(input.paymentReceiptRedoLicenseExam);
+      console.log(input.licenseTopic);
+      console.log(input.coordinatorProf);
+      console.log(input.phoneNumber);
+      /*
+       this.withdrawalService.sendLicenseRequest(input)
+       .subscribe((data) => this.send(data),
+       (error) => this.showError());
+       */
+
+      this.showDialogSuccess();
+    }
+    this.display6 = false;
   }
 
 }

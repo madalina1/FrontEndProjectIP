@@ -6,8 +6,8 @@ export class DiplomaRequestDoc extends Document {
   public id: number;
   public documentName: string;
   public studentName: string;
-  public currentYear: number;
-  public yearOfStudy: number;
+  public currentYear: string;
+  public yearOfStudy: string;
 
   constructor(object: any) {
     super();

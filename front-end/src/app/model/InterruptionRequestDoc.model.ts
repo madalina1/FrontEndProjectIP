@@ -6,8 +6,8 @@ export class InterruptionRequestDoc extends Document {
   public id: number;
   public documentName: string;
   public studentName: string;
-  public currentYear: number;
-  public yearOfStudy: number;
+  public currentYear: string;
+  public yearOfStudy: string;
   public startingSemester: number;
   public fromUniversityYear: number;
   public numberOfSemesters: number;
