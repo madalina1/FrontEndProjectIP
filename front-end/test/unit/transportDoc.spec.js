@@ -4,7 +4,7 @@ describe('TransportDoc testing', function() {
 
     it('invalid date CI adresses', function() {});
     it('check valid date CI adresses', function() {});
-
+    it('corectly submitting', function() { });
 
 });
 
